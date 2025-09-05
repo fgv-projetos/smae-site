@@ -2,6 +2,7 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint'],
   devtools: { enabled: true },
+  css: ['~/assets/scss/main.scss'],
   compatibilityDate: '2025-07-15',
   eslint: {
     checker: true,
