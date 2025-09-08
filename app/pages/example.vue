@@ -20,7 +20,10 @@
               <li><a href="#guia-uso">GUIA PARA USO</a></li>
               <li><a href="#contato">COMECE A USAR</a></li>
             </ul>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <button
+              class="mobile-menu-btn"
+              onclick="toggleMobileMenu()"
+            >
               ☰
             </button>
           </nav>
@@ -39,12 +42,18 @@
           <div>logo</div>
         </div>
         <h1>Sistema de Monitoramento e Acompanhamento Estratégico</h1>
-        <a href="#contato" class="btn-primary">COMECE A USAR</a>
+        <a
+          href="#contato"
+          class="btn-primary"
+        >COMECE A USAR</a>
       </div>
     </section>
 
     <!-- Features Section -->
-    <section id="funcionalidades" class="features">
+    <section
+      id="funcionalidades"
+      class="features"
+    >
       <div class="container">
         <div class="features-grid fade-in">
           <div class="feature-card">
@@ -99,7 +108,10 @@
     </section>
 
     <!-- Modules Section -->
-    <section id="modulos" class="modules">
+    <section
+      id="modulos"
+      class="modules"
+    >
       <div class="container">
         <h2 class="section-title fade-in">
           Módulos do SMAE
@@ -150,7 +162,10 @@
     </section>
 
     <!-- Case Section -->
-    <section id="use-case" class="case-section">
+    <section
+      id="use-case"
+      class="case-section"
+    >
       <div class="container">
         <div class="case-grid fade-in">
           <div class="case-content">
@@ -203,7 +218,10 @@
               transparência e melhoria contínua dos serviços públicos.
             </p>
             <br>
-            <a href="#contato" class="btn-primary">FALE CONOSCO</a>
+            <a
+              href="#contato"
+              class="btn-primary"
+            >FALE CONOSCO</a>
           </div>
           <div class="map-container">
             <img
@@ -217,7 +235,10 @@
     </section>
 
     <!-- Guidelines Section -->
-    <section id="guia-uso" class="guideline">
+    <section
+      id="guia-uso"
+      class="guideline"
+    >
       <div class="container">
         <div class="guideline-grid fade-in">
           <div>
@@ -235,10 +256,16 @@
               gestores até técnicos especializados.
             </p>
             <br>
-            <a href="#documentacao" class="btn-primary">LEIA MAIS</a>
+            <a
+              href="#documentacao"
+              class="btn-primary"
+            >LEIA MAIS</a>
           </div>
           <div style="text-align: center">
-            <button class="btn-secondary" onclick="openDonationModal()">
+            <button
+              class="btn-secondary"
+              onclick="openDonationModal()"
+            >
               DOE
             </button>
           </div>
@@ -294,105 +321,105 @@ onMounted(() => {
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     anchor.addEventListener(
       'click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        e.preventDefault()
+        const target = document.querySelector(this.getAttribute('href'))
         if (target) {
           target.scrollIntoView({
             behavior: 'smooth',
             block: 'start',
-          });
+          })
         }
       },
-    );
-  });
+    )
+  })
 
   // Fade in animation on scroll
   const observerOptions = {
     threshold: 0.1,
     rootMargin: '0px 0px -50px 0px',
-  };
+  }
 
   const observer = new IntersectionObserver(
     function (entries) {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
+          entry.target.classList.add('visible')
         }
-      });
+      })
     }, observerOptions,
-  );
+  )
 
   document.querySelectorAll('.fade-in').forEach((el) => {
-    observer.observe(el);
-  });
+    observer.observe(el)
+  })
 
   // Mobile menu toggle
   function toggleMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu');
-    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex';
+    const navMenu = document.querySelector('.nav-menu')
+    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex'
 
     if (navMenu.style.display === 'flex') {
-      navMenu.style.position = 'absolute';
-      navMenu.style.top = '100%';
-      navMenu.style.left = '0';
-      navMenu.style.right = '0';
-      navMenu.style.background = 'var(--primary-blue)';
-      navMenu.style.flexDirection = 'column';
-      navMenu.style.padding = '1rem';
-      navMenu.style.gap = '1rem';
+      navMenu.style.position = 'absolute'
+      navMenu.style.top = '100%'
+      navMenu.style.left = '0'
+      navMenu.style.right = '0'
+      navMenu.style.background = 'var(--primary-blue)'
+      navMenu.style.flexDirection = 'column'
+      navMenu.style.padding = '1rem'
+      navMenu.style.gap = '1rem'
     }
   }
 
   // Donation modal
   function openDonationModal() {
-    alert('Função de doação será implementada em breve. Obrigado pelo seu interesse em apoiar o projeto SMAE!');
+    alert('Função de doação será implementada em breve. Obrigado pelo seu interesse em apoiar o projeto SMAE!')
   }
 
   // Form contact handler
   function handleContact() {
-    alert('Formulário de contato será aberto. Em breve você poderá entrar em contato diretamente conosco!');
+    alert('Formulário de contato será aberto. Em breve você poderá entrar em contato diretamente conosco!')
   }
 
   // Initialize animations when page loads
   window.addEventListener(
     'load', function () {
     // Add smooth reveal animation to hero elements
-      const heroElements = document.querySelectorAll('.hero > .container > *');
+      const heroElements = document.querySelectorAll('.hero > .container > *')
       heroElements.forEach((
         el, index,
       ) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(30px)'
         setTimeout(
           () => {
-            el.style.transition = 'all 0.6s ease';
-            el.style.opacity = '1';
-            el.style.transform = 'translateY(0)';
+            el.style.transition = 'all 0.6s ease'
+            el.style.opacity = '1'
+            el.style.transform = 'translateY(0)'
           }, index * 200,
-        );
-      });
+        )
+      })
     },
-  );
+  )
 
   // Add scroll effect to header
   window.addEventListener(
     'scroll', function () {
-      const header = document.querySelector('.header');
+      const header = document.querySelector('.header')
       if (window.scrollY > 100) {
-        header.style.background = 'rgba(30, 58, 95, 0.95)';
-        header.style.backdropFilter = 'blur(10px)';
+        header.style.background = 'rgba(30, 58, 95, 0.95)'
+        header.style.backdropFilter = 'blur(10px)'
       }
       else {
-        header.style.background = 'var(--primary-blue)';
-        header.style.backdropFilter = 'none';
+        header.style.background = 'var(--primary-blue)'
+        header.style.backdropFilter = 'none'
       }
     },
-  );
+  )
 
   // Add click handlers for CTA buttons
   document.addEventListener(
     'DOMContentLoaded', function () {
-      const ctaButtons = document.querySelectorAll('.btn-primary');
+      const ctaButtons = document.querySelectorAll('.btn-primary')
       ctaButtons.forEach((button) => {
         if (
           button.textContent.includes('COMECE A USAR')
@@ -401,16 +428,16 @@ onMounted(() => {
           button.addEventListener(
             'click', function (e) {
               if (this.getAttribute('href') === '#contato') {
-                e.preventDefault();
-                handleContact();
+                e.preventDefault()
+                handleContact()
               }
             },
-          );
+          )
         }
-      });
+      })
     },
-  );
-});
+  )
+})
 </script>
 
 <style>
