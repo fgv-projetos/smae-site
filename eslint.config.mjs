@@ -25,4 +25,5 @@ export default withNuxt({
     'object-property-newline': ['error'],
     'padded-blocks': ['error', 'never'],
   },
+  ignores: ['app/pages/example.vue'],
 });
