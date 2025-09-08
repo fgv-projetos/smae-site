@@ -1,18 +1,32 @@
 <template>
   <header class="site-header">
-    <div class="site-header__container">
+    <div ref="header" class="site-header__container">
       <figure>
         <div class="site-header__logo">
           logo
         </div>
       </figure>
 
-      <nav class="site-header__items">
+      <button
+        v-if="isMobile"
+        class="site-header__nav-button"
+        @click="handleToggleMenu"
+      >
+        <img src="~/assets/icons/menu-hamburguer.svg" alt="">
+      </button>
+
+      <nav
+        :class="[
+          'site-header__items',
+          { 'site-header__items--is-visible': isMenuVisible },
+        ]"
+      >
         <NuxtLink
           v-for="section in sections"
           :key="`section--${section.key}`"
           class="site-header__item"
           :to="`#${section.key}`"
+          @click="handleHideMenu"
         >
           {{ section.label }}
         </NuxtLink>
@@ -22,6 +36,8 @@
 </template>
 
 <script lang="ts" setup>
+import { useDebounceFn, useResizeObserver } from '@vueuse/core'
+
 const sections: { label: string, key: string }[] = [
   {
     label: 'Funcionalidades',
@@ -49,6 +65,37 @@ const sections: { label: string, key: string }[] = [
   },
 ]
 
+const headerTemplate = useTemplateRef('header')
+
+const isMobile = ref(true)
+const isMenuVisible = ref(true)
+
+useResizeObserver(
+  headerTemplate, useDebounceFn(
+    async () => {
+      if (!headerTemplate.value) {
+        return
+      }
+
+      isMobile.value = !!(headerTemplate.value?.offsetWidth < 1000)
+    }, 400,
+  ),
+);
+
+watch(
+  isMobile, () => {
+    isMenuVisible.value = false
+  },
+)
+
+function handleToggleMenu() {
+  isMenuVisible.value = !isMenuVisible.value
+}
+
+function handleHideMenu() {
+  isMenuVisible.value = false
+}
+
 onMounted(() => {
   window.addEventListener(
     'scroll', function () {
@@ -67,20 +114,15 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-  /* .header {
-    background: $primary-blue;
-    padding: 1rem 0;
-    position: fixed;
-    } */
-
 .site-header {
   top: 0;
   width: 100%;
   z-index: 1000;
   box-shadow: 0px 2px 3px 0px #0000004D;
   background-color: $white;
-  padding: 20px 80px;
+  padding: 20px 25px;
   container-type: inline-size;
+  position: relative;
 }
 
 .site-header__container {
@@ -101,6 +143,7 @@ onMounted(() => {
 .site-header__items {
   display: flex;
   gap: 30px;
+  background-color: $white;
 }
 
 .site-header__item {
@@ -112,7 +155,7 @@ onMounted(() => {
   letter-spacing: 0.1rem;
   text-transform: uppercase;
   color: $gray-600;
-  height: 100%;
+  /* height: 100%; */
 
   position: relative;
 
@@ -135,34 +178,34 @@ onMounted(() => {
   &:hover::after {
     transform: scaleX(1);
   }
-
 }
 
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+@container (width < 1000px) {
+  .site-header__nav-button {
+    cursor: pointer;
+    padding: 5px;
+  }
 
-.logo {
-  height: 40px;
-  filter: brightness(0) invert(1);
-}
+  .site-header__items {
+    position: absolute;
+    top: 100%;
+    height: 100vh;
+    right: 0;
+    gap: 0;
 
-.nav-menu {
-  display: flex;
-  list-style: none;
-  gap: 2rem;
-}
+    flex-direction: column;
+    padding: 30px 25px;
 
-.nav-menu a {
-  color: white;
-  text-decoration: none;
-  font-size: 0.9rem;
-  transition: color 0.3s;
-}
+    transform: translateX(100%);
+    transition: transform .3s ease-in;
+  }
 
-.nav-menu a:hover {
-  color: var(--accent-yellow);
+  .site-header__items--is-visible {
+    transform: translateX(0);
+  }
+
+  .site-header__item {
+    text-align: center;
+  }
 }
 </style>
