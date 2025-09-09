@@ -1,5 +1,5 @@
 <template>
-  <h1>index</h1>
+  <Hero />
 
   <p>Chuck Norris tells Simon what to do. Mission Impossible was originally set in Chuck Norris’s house. Chuck Norris can clap with one hand. Chuck Norris is the reason why Waldo is hiding. Chuck Norris drinks napalm to fight his heartburn.</p>
 
@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts" setup>
-
+import Hero from './_sections/Hero.vue';
 </script>
 
 <style scoped>
