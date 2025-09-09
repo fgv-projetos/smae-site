@@ -7,7 +7,6 @@
           src="~/assets/images/logo.svg"
           alt="Logo SMAE"
         >
-        </img>
       </figure>
 
       <button
