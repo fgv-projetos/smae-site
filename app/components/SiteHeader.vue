@@ -74,9 +74,9 @@ const sections: { label: string, key: string }[] = [
 const headerTemplate = useTemplateRef('header')
 const headerContainerTemplate = useTemplateRef('header-container')
 
-const isMobile = ref(true)
+const isMobile = ref(false)
 const isTopHided = ref(false)
-const isMenuVisible = ref(true)
+const isMenuVisible = ref(false)
 
 useResizeObserver(
   headerContainerTemplate, useDebounceFn(
@@ -109,7 +109,7 @@ onMounted(() => {
 
   window.addEventListener(
     'scroll', useDebounceFn(
-      (ev) => {
+      () => {
         if (!headerTemplate.value) {
           return
         }
@@ -136,7 +136,7 @@ onMounted(() => {
         }
 
         lastScrollTop = currentScrollTop;
-      }, 50,
+      }, 25,
     ),
   );
 })

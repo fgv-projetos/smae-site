@@ -353,28 +353,6 @@ onMounted(() => {
     observer.observe(el)
   })
 
-  // Mobile menu toggle
-  function toggleMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu')
-    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex'
-
-    if (navMenu.style.display === 'flex') {
-      navMenu.style.position = 'absolute'
-      navMenu.style.top = '100%'
-      navMenu.style.left = '0'
-      navMenu.style.right = '0'
-      navMenu.style.background = 'var(--primary-blue)'
-      navMenu.style.flexDirection = 'column'
-      navMenu.style.padding = '1rem'
-      navMenu.style.gap = '1rem'
-    }
-  }
-
-  // Donation modal
-  function openDonationModal() {
-    alert('Função de doação será implementada em breve. Obrigado pelo seu interesse em apoiar o projeto SMAE!')
-  }
-
   // Form contact handler
   function handleContact() {
     alert('Formulário de contato será aberto. Em breve você poderá entrar em contato diretamente conosco!')
