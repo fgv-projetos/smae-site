@@ -31,6 +31,10 @@ body {
   color: #000;
 }
 
+body > * {
+  overflow: hidden;
+}
+
 /* Remove estilos padrão de listas */
 ul,
 ol {
