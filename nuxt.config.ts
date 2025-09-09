@@ -1,11 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: [
-    '@nuxt/eslint',
-    '@nuxt/fonts',
-    '@nuxt/eslint',
-    '@vueuse/nuxt',
-  ],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image'],
   devtools: { enabled: true },
   css: ['~/assets/scss/main.scss'],
   compatibilityDate: '2025-07-15',
@@ -20,10 +15,14 @@ export default defineNuxtConfig({
       },
     },
   },
+
   eslint: {
     checker: true,
     config: {
       stylistic: true,
     },
+  },
+  image: {
+    dir: 'assets/images', // specify your images directory within assets/
   },
 });
