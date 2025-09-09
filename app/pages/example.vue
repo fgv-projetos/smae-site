@@ -35,11 +35,11 @@
     <section class="hero">
       <div class="container">
         <div class="hero-icon">
-          <!-- <img
+          <img
             src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/0162f933-add8-4967-b710-ba45d3cd50a3.png"
             alt="SMAE system icon representing monitoring and strategic tracking"
-          /> -->
-          <div>logo</div>
+          >
+          <!-- <div>logo</div> -->
         </div>
         <h1>Sistema de Monitoramento e Acompanhamento Estratégico</h1>
         <a
@@ -352,28 +352,6 @@ onMounted(() => {
   document.querySelectorAll('.fade-in').forEach((el) => {
     observer.observe(el)
   })
-
-  // Mobile menu toggle
-  function toggleMobileMenu() {
-    const navMenu = document.querySelector('.nav-menu')
-    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex'
-
-    if (navMenu.style.display === 'flex') {
-      navMenu.style.position = 'absolute'
-      navMenu.style.top = '100%'
-      navMenu.style.left = '0'
-      navMenu.style.right = '0'
-      navMenu.style.background = 'var(--primary-blue)'
-      navMenu.style.flexDirection = 'column'
-      navMenu.style.padding = '1rem'
-      navMenu.style.gap = '1rem'
-    }
-  }
-
-  // Donation modal
-  function openDonationModal() {
-    alert('Função de doação será implementada em breve. Obrigado pelo seu interesse em apoiar o projeto SMAE!')
-  }
 
   // Form contact handler
   function handleContact() {
@@ -767,7 +745,7 @@ body {
 .footer-copyright {
   text-align: center;
   padding-top: 2rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgb(255 255 255 / 10%);
   opacity: 0.7;
 }
 
@@ -780,7 +758,7 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+@media (width <= 768px) {
   .nav-menu {
     display: none;
   }
