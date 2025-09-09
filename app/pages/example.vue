@@ -8,7 +8,7 @@
             src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/c5b2a7f3-1904-4199-a864-6b52909aed0f.png"
             alt="SMAE - Sistema de Monitoramento e Acompanhamento Estratégico logo"
             class="logo"
-          />
+          >
 
           <nav>
             <ul class="nav-menu">
@@ -20,7 +20,10 @@
               <li><a href="#guia-uso">GUIA PARA USO</a></li>
               <li><a href="#contato">COMECE A USAR</a></li>
             </ul>
-            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+            <button
+              class="mobile-menu-btn"
+              onclick="toggleMobileMenu()"
+            >
               ☰
             </button>
           </nav>
@@ -39,45 +42,63 @@
           <div>logo</div>
         </div>
         <h1>Sistema de Monitoramento e Acompanhamento Estratégico</h1>
-        <a href="#contato" class="btn-primary">COMECE A USAR</a>
+        <a
+          href="#contato"
+          class="btn-primary"
+        >COMECE A USAR</a>
       </div>
     </section>
 
     <!-- Features Section -->
-    <section id="funcionalidades" class="features">
+    <section
+      id="funcionalidades"
+      class="features"
+    >
       <div class="container">
         <div class="features-grid fade-in">
           <div class="feature-card">
-            <div class="feature-icon">📊</div>
+            <div class="feature-icon">
+              📊
+            </div>
             <h3>Dashboards intuitivos auxiliam na tomada de decisão.</h3>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">🔗</div>
+            <div class="feature-icon">
+              🔗
+            </div>
             <h3>Relaciona APIs e bases a bancos de dados.</h3>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">🔍</div>
+            <div class="feature-icon">
+              🔍
+            </div>
             <h3>
               Investigação na área de desenvolvimento governamental: SGI, SOI,
               Transferência
             </h3>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">📝</div>
+            <div class="feature-icon">
+              📝
+            </div>
             <h3>
               Promove melhores práticas em gestão de risco para a gestão e
               colaboração na tomada de decisões.
             </h3>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">💾</div>
+            <div class="feature-icon">
+              💾
+            </div>
             <h3>
               Reúne e analisa condutas pertinentes e comportamentos de dados
               entre SMAE e parceiros utilizando métodos e conhecimento avançado.
             </h3>
           </div>
           <div class="feature-card">
-            <div class="feature-icon">🔎</div>
+            <div class="feature-icon">
+              🔎
+            </div>
             <h3>
               Gera e mantém a estrutura de integração com plataformas SWM.
             </h3>
@@ -87,9 +108,14 @@
     </section>
 
     <!-- Modules Section -->
-    <section id="modulos" class="modules">
+    <section
+      id="modulos"
+      class="modules"
+    >
       <div class="container">
-        <h2 class="section-title fade-in">Módulos do SMAE</h2>
+        <h2 class="section-title fade-in">
+          Módulos do SMAE
+        </h2>
         <div class="modules-grid">
           <div class="module-card fade-in">
             <h3>Programa de Metas</h3>
@@ -136,7 +162,10 @@
     </section>
 
     <!-- Case Section -->
-    <section id="use-case" class="case-section">
+    <section
+      id="use-case"
+      class="case-section"
+    >
       <div class="container">
         <div class="case-grid fade-in">
           <div class="case-content">
@@ -148,7 +177,7 @@
               revolucionado a forma como a administração municipal planeja,
               executa e monitora suas políticas públicas.
             </p>
-            <br />
+            <br>
             <p>
               O sistema permite um controle mais rigoroso das metas
               estabelecidas, proporcionando transparência e facilitando a tomada
@@ -160,7 +189,7 @@
             <img
               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/89327fda-1568-4582-8ae1-e706e6005a4b.png"
               alt="Video demonstrativo do sistema SMAE sendo utilizado pela Prefeitura de São Paulo, mostrando dashboards e funcionalidades em ação"
-            />
+            >
           </div>
         </div>
       </div>
@@ -175,7 +204,7 @@
               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e0591b9c-a536-4c00-8dde-85e96e4b0bb9.png"
               alt="Fundação Getúlio Vargas logo, instituição responsável pelo desenvolvimento do SMAE"
               class="fgv-logo"
-            />
+            >
             <h3>POWERED BY FGV</h3>
             <p>
               A FGV Projetos, especializada em consultoria pública e produtos
@@ -183,27 +212,33 @@
               experiência em gestão governamental e tecnologia aplicada à
               administração pública.
             </p>
-            <br />
+            <br>
             <p>
               Nosso compromisso é fornecer soluções que promovam a eficiência,
               transparência e melhoria contínua dos serviços públicos.
             </p>
-            <br />
-            <a href="#contato" class="btn-primary">FALE CONOSCO</a>
+            <br>
+            <a
+              href="#contato"
+              class="btn-primary"
+            >FALE CONOSCO</a>
           </div>
           <div class="map-container">
             <img
               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/bb4e978e-d84c-47d1-bc89-2ac08cdc7ea1.png"
               alt="Mapa interativo mostrando as regiões e localidades onde o sistema SMAE está sendo implementado no Brasil"
               class="map-image"
-            />
+            >
           </div>
         </div>
       </div>
     </section>
 
     <!-- Guidelines Section -->
-    <section id="guia-uso" class="guideline">
+    <section
+      id="guia-uso"
+      class="guideline"
+    >
       <div class="container">
         <div class="guideline-grid fade-in">
           <div>
@@ -214,17 +249,23 @@
               funcionalidades avançadas, você encontrará tudo que precisa para
               maximizar o potencial da plataforma.
             </p>
-            <br />
+            <br>
             <p>
               O guia inclui exemplos práticos, casos de uso, boas práticas e
               orientações técnicas para diferentes perfis de usuários, desde
               gestores até técnicos especializados.
             </p>
-            <br />
-            <a href="#documentacao" class="btn-primary">LEIA MAIS</a>
+            <br>
+            <a
+              href="#documentacao"
+              class="btn-primary"
+            >LEIA MAIS</a>
           </div>
           <div style="text-align: center">
-            <button class="btn-secondary" onclick="openDonationModal()">
+            <button
+              class="btn-secondary"
+              onclick="openDonationModal()"
+            >
               DOE
             </button>
           </div>
@@ -241,12 +282,12 @@
               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e77dfb7f-8a50-41a4-bc38-2662dfcd444b.png"
               alt="SMAE footer logo"
               class="footer-logo"
-            />
+            >
             <img
               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/a39e6df6-6513-4353-9b97-36657dad82ab.png"
               alt="FGV footer logo"
               class="footer-logo"
-            />
+            >
           </div>
           <nav class="footer-links">
             <a href="#privacidade">Política de Privacidade</a>
@@ -260,7 +301,7 @@
               src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/86c47e31-8474-46d1-be76-87846282709c.png"
               alt="Governo Federal logo"
               class="footer-logo"
-            />
+            >
           </div>
         </div>
         <div class="footer-copyright">
@@ -278,112 +319,125 @@
 onMounted(() => {
   // Smooth scrolling for anchor links
   document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const target = document.querySelector(this.getAttribute("href"));
-      if (target) {
-        target.scrollIntoView({
-          behavior: "smooth",
-          block: "start",
-        });
-      }
-    });
-  });
+    anchor.addEventListener(
+      'click', function (e) {
+        e.preventDefault()
+        const target = document.querySelector(this.getAttribute('href'))
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start',
+          })
+        }
+      },
+    )
+  })
 
   // Fade in animation on scroll
   const observerOptions = {
     threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px",
-  };
+    rootMargin: '0px 0px -50px 0px',
+  }
 
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-      }
-    });
-  }, observerOptions);
+  const observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible')
+        }
+      })
+    }, observerOptions,
+  )
 
-  document.querySelectorAll(".fade-in").forEach((el) => {
-    observer.observe(el);
-  });
+  document.querySelectorAll('.fade-in').forEach((el) => {
+    observer.observe(el)
+  })
 
   // Mobile menu toggle
   function toggleMobileMenu() {
-    const navMenu = document.querySelector(".nav-menu");
-    navMenu.style.display = navMenu.style.display === "flex" ? "none" : "flex";
+    const navMenu = document.querySelector('.nav-menu')
+    navMenu.style.display = navMenu.style.display === 'flex' ? 'none' : 'flex'
 
-    if (navMenu.style.display === "flex") {
-      navMenu.style.position = "absolute";
-      navMenu.style.top = "100%";
-      navMenu.style.left = "0";
-      navMenu.style.right = "0";
-      navMenu.style.background = "var(--primary-blue)";
-      navMenu.style.flexDirection = "column";
-      navMenu.style.padding = "1rem";
-      navMenu.style.gap = "1rem";
+    if (navMenu.style.display === 'flex') {
+      navMenu.style.position = 'absolute'
+      navMenu.style.top = '100%'
+      navMenu.style.left = '0'
+      navMenu.style.right = '0'
+      navMenu.style.background = 'var(--primary-blue)'
+      navMenu.style.flexDirection = 'column'
+      navMenu.style.padding = '1rem'
+      navMenu.style.gap = '1rem'
     }
   }
 
   // Donation modal
   function openDonationModal() {
-    alert(
-      "Função de doação será implementada em breve. Obrigado pelo seu interesse em apoiar o projeto SMAE!",
-    );
+    alert('Função de doação será implementada em breve. Obrigado pelo seu interesse em apoiar o projeto SMAE!')
   }
 
   // Form contact handler
   function handleContact() {
-    alert(
-      "Formulário de contato será aberto. Em breve você poderá entrar em contato diretamente conosco!",
-    );
+    alert('Formulário de contato será aberto. Em breve você poderá entrar em contato diretamente conosco!')
   }
 
   // Initialize animations when page loads
-  window.addEventListener("load", function () {
+  window.addEventListener(
+    'load', function () {
     // Add smooth reveal animation to hero elements
-    const heroElements = document.querySelectorAll(".hero > .container > *");
-    heroElements.forEach((el, index) => {
-      el.style.opacity = "0";
-      el.style.transform = "translateY(30px)";
-      setTimeout(() => {
-        el.style.transition = "all 0.6s ease";
-        el.style.opacity = "1";
-        el.style.transform = "translateY(0)";
-      }, index * 200);
-    });
-  });
+      const heroElements = document.querySelectorAll('.hero > .container > *')
+      heroElements.forEach((
+        el, index,
+      ) => {
+        el.style.opacity = '0'
+        el.style.transform = 'translateY(30px)'
+        setTimeout(
+          () => {
+            el.style.transition = 'all 0.6s ease'
+            el.style.opacity = '1'
+            el.style.transform = 'translateY(0)'
+          }, index * 200,
+        )
+      })
+    },
+  )
 
   // Add scroll effect to header
-  window.addEventListener("scroll", function () {
-    const header = document.querySelector(".header");
-    if (window.scrollY > 100) {
-      header.style.background = "rgba(30, 58, 95, 0.95)";
-      header.style.backdropFilter = "blur(10px)";
-    } else {
-      header.style.background = "var(--primary-blue)";
-      header.style.backdropFilter = "none";
-    }
-  });
+  window.addEventListener(
+    'scroll', function () {
+      const header = document.querySelector('.header')
+      if (window.scrollY > 100) {
+        header.style.background = 'rgba(30, 58, 95, 0.95)'
+        header.style.backdropFilter = 'blur(10px)'
+      }
+      else {
+        header.style.background = 'var(--primary-blue)'
+        header.style.backdropFilter = 'none'
+      }
+    },
+  )
 
   // Add click handlers for CTA buttons
-  document.addEventListener("DOMContentLoaded", function () {
-    const ctaButtons = document.querySelectorAll(".btn-primary");
-    ctaButtons.forEach((button) => {
-      if (
-        button.textContent.includes("COMECE A USAR") ||
-        button.textContent.includes("FALE CONOSCO")
-      ) {
-        button.addEventListener("click", function (e) {
-          if (this.getAttribute("href") === "#contato") {
-            e.preventDefault();
-            handleContact();
-          }
-        });
-      }
-    });
-  });
-});
+  document.addEventListener(
+    'DOMContentLoaded', function () {
+      const ctaButtons = document.querySelectorAll('.btn-primary')
+      ctaButtons.forEach((button) => {
+        if (
+          button.textContent.includes('COMECE A USAR')
+          || button.textContent.includes('FALE CONOSCO')
+        ) {
+          button.addEventListener(
+            'click', function (e) {
+              if (this.getAttribute('href') === '#contato') {
+                e.preventDefault()
+                handleContact()
+              }
+            },
+          )
+        }
+      })
+    },
+  )
+})
 </script>
 
 <style>

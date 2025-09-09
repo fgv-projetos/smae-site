@@ -2,6 +2,7 @@ import withNuxt from './.nuxt/eslint.config.mjs';
 
 export default withNuxt({
   rules: {
+    '@stylistic/brace-style': 'off',
     '@stylistic/semi': 'off',
     'vue/no-v-html': 'off',
     'vue/require-default-prop': 'off',
@@ -25,4 +26,5 @@ export default withNuxt({
     'object-property-newline': ['error'],
     'padded-blocks': ['error', 'never'],
   },
+  ignores: ['app/pages/example.vue'],
 });
