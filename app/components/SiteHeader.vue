@@ -1,10 +1,13 @@
 <template>
-  <header class="site-header">
-    <div ref="header" class="site-header__container">
+  <header ref="header" :class="['site-header', { 'site-header--is-hide': isTopHided }]">
+    <div ref="header-container" class="site-header__container max-section">
       <figure>
-        <div class="site-header__logo">
-          logo
-        </div>
+        <img
+          class="site-header__logo"
+          src="~/assets/images/logo.svg"
+          alt="Logo SMAE"
+        >
+        </img>
       </figure>
 
       <button
@@ -12,7 +15,10 @@
         class="site-header__nav-button"
         @click="handleToggleMenu"
       >
-        <img src="~/assets/icons/menu-hamburguer.svg" alt="">
+        <img
+          src="~/assets/icons/menu-hamburguer.svg"
+          alt="icone menu hamburguer"
+        >
       </button>
 
       <nav
@@ -66,18 +72,20 @@ const sections: { label: string, key: string }[] = [
 ]
 
 const headerTemplate = useTemplateRef('header')
+const headerContainerTemplate = useTemplateRef('header-container')
 
 const isMobile = ref(true)
+const isTopHided = ref(false)
 const isMenuVisible = ref(true)
 
 useResizeObserver(
-  headerTemplate, useDebounceFn(
+  headerContainerTemplate, useDebounceFn(
     async () => {
-      if (!headerTemplate.value) {
+      if (!headerContainerTemplate.value) {
         return
       }
 
-      isMobile.value = !!(headerTemplate.value?.offsetWidth < 1000)
+      isMobile.value = !!(headerContainerTemplate.value?.offsetWidth < 1000)
     }, 400,
   ),
 );
@@ -97,18 +105,39 @@ function handleHideMenu() {
 }
 
 onMounted(() => {
+  let lastScrollTop = window.scrollY;
+
   window.addEventListener(
-    'scroll', function () {
-      const header = document.querySelector('.header');
-      if (window.scrollY > 100) {
-        header.style.background = 'rgba(30, 58, 95, 0.95)';
-        header.style.backdropFilter = 'blur(10px)';
-      }
-      else {
-        header.style.background = 'var(--primary-blue)';
-        header.style.backdropFilter = 'none';
-      }
-    },
+    'scroll', useDebounceFn(
+      (ev) => {
+        if (!headerTemplate.value) {
+          return
+        }
+
+        isMenuVisible.value = false
+        const currentScrollTop = window.scrollY;
+
+        if (currentScrollTop < 100) {
+          // scroll start
+          isTopHided.value = false
+          headerTemplate.value.style.position = 'relative'
+
+          return
+        }
+
+        headerTemplate.value.style.position = 'fixed'
+
+        if (currentScrollTop < lastScrollTop) {
+          // scroll up
+          isTopHided.value = true
+        } else if (currentScrollTop > lastScrollTop) {
+          // scroll down
+          isTopHided.value = false
+        }
+
+        lastScrollTop = currentScrollTop;
+      }, 50,
+    ),
   );
 })
 </script>
@@ -120,24 +149,26 @@ onMounted(() => {
   z-index: 1000;
   box-shadow: 0px 2px 3px 0px #0000004D;
   background-color: $white;
-  padding: 20px 25px;
+  padding: 20px 0;
   container-type: inline-size;
-  position: relative;
+  position: sticky;
+
+  transition: transform .2s ease-in;
+}
+
+.site-header--is-hide {
+  transform: translateY(-100%);
 }
 
 .site-header__container {
-  max-width: 1300px;
-  margin: 0 auto;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .site-header__logo {
-  width: 110px;
-  height: 42px;
-  background-color: red;
+  width: 100%;
+  height: 100%;
 }
 
 .site-header__items {
