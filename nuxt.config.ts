@@ -15,7 +15,6 @@ export default defineNuxtConfig({
       },
     },
   },
-
   eslint: {
     checker: true,
     config: {
@@ -24,5 +23,8 @@ export default defineNuxtConfig({
   },
   image: {
     dir: 'assets/images', // specify your images directory within assets/
+    // force ipx, as otherwise it would default to using Netlify Image CDN (which probably is better to use, but issue is about ipx)
+    provider: 'ipx',
+    domains: ['smae-site.netlify.app'],
   },
 });
