@@ -42,7 +42,7 @@
   background-repeat: no-repeat;
   background-position: center center;
 
-  color: #fff;
+  color: $white;
 }
 
 .hero__container {
