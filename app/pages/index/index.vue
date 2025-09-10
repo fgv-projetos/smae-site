@@ -1,6 +1,8 @@
 <template>
   <Hero />
 
+  <Modules />
+
   <p>Chuck Norris tells Simon what to do. Mission Impossible was originally set in Chuck Norris’s house. Chuck Norris can clap with one hand. Chuck Norris is the reason why Waldo is hiding. Chuck Norris drinks napalm to fight his heartburn.</p>
 
   <p>Chuck Norris doesn’t cheat death. He wins fair and square. Chuck Norris can have both feet on the ground and kick butt at the same time. Chuck Norris has a mug of nails instead of coffee in the morning. Chuck Norris can strangle you with a cordless phone. Chuck Norris’ tears cure cancer. Too bad he has never cried.</p>
@@ -82,6 +84,7 @@
 
 <script lang="ts" setup>
 import Hero from './_sections/Hero.vue';
+import Modules from './_sections/Modules.vue';
 </script>
 
 <style scoped>
