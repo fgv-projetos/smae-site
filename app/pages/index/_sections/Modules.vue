@@ -86,7 +86,6 @@ useResizeObserver(
     modulesTemplate.value?.style.setProperty(
       '--margin', margin,
     )
-    // itemMargin.value = margin
   },
 )
 </script>
