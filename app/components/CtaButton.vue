@@ -22,7 +22,7 @@ defineProps<Props>()
   font-size: .43rem;
   line-height: .8rem;
   text-transform: uppercase;
-  font-family: 'roboto';
+  font-family: Roboto;
   font-weight: 900;
   letter-spacing: 1px;
 

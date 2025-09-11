@@ -1,181 +1,198 @@
 <template>
-  <section class="modules section">
-    <div class="modules__container max-section">
-      <article class="modules__about">
-        <p>
-          O SMAE é um software livre e de código aberto voltado à administração pública, que permite o Gerenciamento de Programas de Metas e Planos Setoriais, Monitoramento de Obras, Gestão de Projetos e Monitoramento das Emendas Parlamentares.
-        </p>
+  <section ref="modules" class="modules section">
+    <div class="modules__container">
+      <h1 ref="title" class="modules__title max-section">
+        Módulos do SMAE
+      </h1>
 
-        <p>
-          O SMAE estabelece processos mais eficientes de avaliação de políticas públicas, fortalecendo a gestão com uma abordagem estratégica baseada em indicadores e resultados.
-        </p>
-      </article>
+      <dl class="modules__list">
+        <div
+          v-for="(moduleItem, moduleItemIndex) in modules"
+          :key="`module-item--${moduleItem.title}`"
+          class="module-item"
+          :style="{
+            '--posicao': 1 + (2 * moduleItemIndex),
+          }"
+        >
+          <Icon :name="'icon:'+moduleItem.icon" class="module-item__icon" />
 
-      <aside>
-        <dl class="modules__list">
-          <div
-            v-for="moduleItem in modules"
-            :key="`module-item--${moduleItem.icon}`"
-            class="module-item"
-          >
-            <dt class="module-item__icon">
-              <Icon :name="'icon:'+moduleItem.icon" />
+          <div class="module-item__container">
+            <dt class="module-item__title">
+              {{ moduleItem.title }}
             </dt>
 
-            <dd class="module-item__label">
-              {{ moduleItem.label }}
+            <dd class="module-item__description">
+              {{ moduleItem.description }}
             </dd>
           </div>
-        </dl>
-      </aside>
+        </div>
+      </dl>
     </div>
   </section>
 </template>
 
 <script lang="ts" setup>
+import { useResizeObserver } from '@vueuse/core'
+
 const modules = [
   {
-    icon: 'painel-estrategico',
-    label: 'Dashboards interativos auxiliam na tomada de decisão.',
+    icon: 'modulo-programa-de-metas',
+    title: 'Programa de Metas',
+    description: 'O módulo de Programa de Metas é uma ferramenta estratégica projetada para realizar o acompanhamento das metas estabelecidas pela gestão pública e otimizar os resultados das políticas públicas através de indicadores e cronogramas em ciclos de monitoramento físico e financeiro.',
   },
   {
-    icon: 'relatorio',
-    label: 'Relatórios e APIs disponibilizam os dados.',
+    icon: 'modulo-gestao-de-projetos',
+    title: 'Gestão de Projetos',
+    description: 'O módulo de Gestão de Projetos oferece transparência e eficiência no acompanhamento dos projetos públicos. Possibilita o monitoramento de prazos, custos, escopo e riscos, além de apoiar a tomada de decisões. Todo o processo é estruturado com base nas boas práticas do PMBOK, garantindo padronização, organização e maior controle na execução dos projetos.',
   },
   {
-    icon: 'oportunidades',
-    label: 'Integrações com sistemas governamentais: SOF, SEI, TransfereGov.',
+    icon: 'modulo-gestao-de-obras',
+    title: 'Monitoramento de Obras',
+    description: 'O módulo de Monitoramento de Obras foi criado para aprimorar a gestão e garantir maior eficiência no acompanhamento das obras realizadas pelos diferentes órgãos públicos. Ele promove sinergia entre as áreas envolvidas e integra as informações em uma única plataforma. Segue as boas práticas de monitoramento de obras públicas, permitindo o controle de prazos, custos, cronogramas, contratos e recursos, além de disponibilizar funcionalidades de georreferenciamento.',
   },
   {
-    icon: 'editar',
-    label: 'Promove melhores práticas na gestão da informação e garante a consistência na coleta de dados.',
+    icon: 'modulo-transferencias-voluntarias',
+    title: 'Transferências Voluntárias',
+    description: 'O módulo de Transferências Voluntárias acompanha emendas parlamentares ao longo de todo o seu ciclo de vida, assegurando transparência sobre o andamento e a aplicação dos repasses. Representa um avanço significativo na gestão das transferências de recursos públicos, ao reunir expertise, tecnologia e processos para apoio aos órgãos na captação, execução e prestação de contas de recursos federais e estaduais.',
   },
   {
-    icon: 'banco-variaveis',
-    label: 'Banco de variáveis centralizado permite o compartilhamento de dados entre PdM e Planos setoriais evitando retrabalho e minimizando risco de erros.',
-  },
-  {
-    icon: 'busca',
-    label: 'Guia e assistência através de integração com plataforma Wiki.',
+    icon: 'modulo-planos-setoriais',
+    title: 'Planos Setoriais',
+    description: 'O módulo de Planos Setoriais foi concebido para acompanhar os diferentes planos setoriais das secretarias, cujas ações se estendem ao longo de várias gestões. Os Planos Setoriais compartilham o mesmo banco de variáveis do Programa de Metas evitando a duplicidade de informação.',
   },
 ]
+
+const titleTemplate = useTemplateRef('title')
+const modulesTemplate = useTemplateRef('modules')
+
+function getItemMargin() {
+  if (!titleTemplate.value) {
+    return '0'
+  }
+
+  const computedStyle = window.getComputedStyle(titleTemplate.value)
+
+  return computedStyle.marginLeft
+}
+
+useResizeObserver(
+  modulesTemplate, () => {
+    if (import.meta.server) {
+      return
+    }
+
+    const margin = getItemMargin()
+
+    modulesTemplate.value?.style.setProperty(
+      '--margin', margin,
+    )
+  },
+)
 </script>
 
 <style lang="scss" scoped>
-$overflow: 47px;
-
-.modules {
-  background-color: $white;
-  margin-bottom: $overflow;
-}
-
-.modules__container {
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-
-  padding: 32px 24px 0 24px;
-}
-
-.modules__about {
-  margin: auto;
-
-  p {
-    margin-left: 40px;
-
-    font-weight: 400;
-    font-size: .75rem;
-    line-height: 1;
-    letter-spacing: 1px;
-
-    &:first-of-type {
-      margin-bottom: .75rem;
-    }
-  }
+.modules__title {
+  color: $white;
+  font-weight: 700;
+  font-size: 1.56rem;
+  line-height: 1;
+  text-align: center;
+  padding: 30px 0;
 }
 
 .modules__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px 10px;
-  margin-bottom: calc($overflow * -1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
+$iconSize: 196px;
+
 .module-item {
-  padding: 9px 17px;
-  box-shadow: 0 10px 16px -8px rgba(0, 0, 0, 0.3);
-  border-radius: 8px;
-  background-color: $white;
-  min-height: 7rem;
+  padding: 60px 30px 60px 30px;
+  background-color: $primary-50;
+  position: relative;
+  min-height: $iconSize;
+}
+
+.module-item:nth-of-type(even) {
+  .module-item__icon {
+    left: 0;
+    right: initial;
+  }
+}
+
+.module-item__container {
+  margin-left: 16px;
 }
 
 .module-item__icon {
-  width: 2.3rem;
-  height: 2.3rem;
-  border-radius: 100%;
-  background-color: $gray-800;
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: .4rem;
+  position: absolute;
 
-  span {
-    width: 100%;
-    height: 100%;
-  }
+  right: 0;
+
+  width: $iconSize;
+  height: $iconSize;
+  align-self: anchor-center;
 }
 
-.module-item__label {
-  font-weight: 400;
-  font-size: .5rem;
+.module-item__title {
+  font-weight: 700;
+  font-size: .68rem;
   line-height: 1;
-  margin-top: 1rem;
 }
 
-@container (width > 1000px) {
-  $overflow: 100px;
+.module-item__description {
+  margin-top: .5rem;
+  font-weight: 400;
+  font-size: .62rem;
+  line-height: .68rem;
+}
 
-  .modules {
-    margin-bottom: $overflow;
-  }
-
-  .modules__container {
-    flex-direction: row;
-    justify-content: space-between;
-    gap: 30px;
-  }
-
-  .modules__about p {
-    font-size: 1rem;
-    line-height: 1.38rem;
-
-    &:first-of-type {
-      margin-bottom: initial;
-    }
+@container (width > 900px) {
+  .modules__title {
+    font-size: 2.5rem;
+    text-align: left;
+    padding-left: 2.5rem;
   }
 
   .modules__list {
     display: grid;
-    gap: 40px 22px;
-    margin-top: calc($overflow * -1);
-    margin-bottom: calc($overflow * -1);
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100px;
+    gap: 130px;
+    gap: 0 100px;
   }
 
   .module-item {
-    padding: 36px 28px;
-    min-height: 235px;
+    border-radius: 0 10px 10px 0;
+
+    grid-column: 1;
+    grid-row: var(--posicao) / span 3;
+
+    padding-left: var(--margin);
+
+    &:nth-of-type(even) {
+      grid-column: 2;
+      border-radius: 10px 0 0 10px;
+
+      padding-left: initial;
+      padding-right: var(--margin);
+    }
   }
 
-  .module-item__icon {
-    width: 6.25rem;
-    height: 6.25rem;
-    padding: 1.2rem;
+  .module-item__container {
+    margin-left: 2.5rem;
   }
 
-  .module-item__label {
+  .module-item__title {
+    font-size: 1rem;
+    line-height: 1;
+  }
+
+  .module-item__description {
     font-size: .87rem;
-    line-height: 1.13rem;
+    line-height: 1rem;
   }
 }
 </style>
