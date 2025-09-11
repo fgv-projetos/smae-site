@@ -15,6 +15,7 @@ defineProps<Props>()
 
 <style lang="scss" scoped>
 .cta-button {
+  display: inline-block;
   padding: 6px 12px;
   background-color: $primary-50;
   color: $gray-800;
