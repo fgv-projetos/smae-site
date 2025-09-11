@@ -82,7 +82,6 @@ useResizeObserver(
     }
 
     const margin = getItemMargin()
-    console.log(margin);
 
     modulesTemplate.value?.style.setProperty(
       '--margin', margin,
