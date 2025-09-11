@@ -91,6 +91,10 @@ useResizeObserver(
 </script>
 
 <style lang="scss" scoped>
+.modules {
+  margin-bottom: 1rem;
+}
+
 .modules__title {
   color: $white;
   font-weight: 700;
@@ -150,6 +154,10 @@ $iconSize: 196px;
 }
 
 @container (width > 900px) {
+  .modules {
+    margin-bottom: 11rem;
+  }
+
   .modules__title {
     font-size: 2.5rem;
     text-align: left;
