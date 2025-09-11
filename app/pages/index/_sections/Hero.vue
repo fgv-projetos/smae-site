@@ -79,7 +79,7 @@
 
 @container (width > 1000px) {
   .hero {
-    min-height: 562px;
+    min-height: 500px;
     background-size: cover;
   }
 
