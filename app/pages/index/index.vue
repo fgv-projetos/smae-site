@@ -1,15 +1,15 @@
 <template>
   <Hero />
 
-  <Advantages />
+  <Advantages id="funcionalidades" />
 
-  <Modules />
+  <Modules id="modulos" />
 
-  <About />
+  <About id="historia-de-sucesso" />
 
-  <ContactUs />
+  <ContactUs id="fale-conosco" />
 
-  <StartToUse />
+  <StartToUse id="comece-a-usar" />
 </template>
 
 <script lang="ts" setup>
@@ -20,10 +20,3 @@ import Hero from './_sections/Hero.vue';
 import Modules from './_sections/Modules.vue';
 import StartToUse from './_sections/StartToUse.vue';
 </script>
-
-<style scoped>
-p, h1 {
-  margin: 0 auto;
-  max-width: 900px;
-}
-</style>
