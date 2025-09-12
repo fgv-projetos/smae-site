@@ -10,12 +10,9 @@
   <ContactUs />
 
   <StartToUse />
-
-  <SiteFooter />
 </template>
 
 <script lang="ts" setup>
-import SiteFooter from '~/components/SiteFooter.vue';
 import About from './_sections/About.vue';
 import Advantages from './_sections/Advantages.vue';
 import ContactUs from './_sections/ContactUs.vue';
