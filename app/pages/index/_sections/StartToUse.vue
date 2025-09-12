@@ -22,7 +22,7 @@
           Conheça os termos antes de baixar os fontes clicando no link abaixo.
         </p>
 
-        <CtaButton label="ler mais" />
+        <CtaButton label="ler mais" alternative />
 
         <aside class="article-technologies max-section">
           <div class="article-technologies__container">

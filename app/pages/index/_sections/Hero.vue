@@ -20,7 +20,11 @@
         Sistema de Monitoramento e Acompanhamento Estratégico
       </h1>
 
-      <CtaButton class="hero__cta" label="Comece a usar" />
+      <CtaButton
+        class="hero__cta"
+        label="Comece a usar"
+        :to="{ hash: '#comece-a-usar' }"
+      />
     </div>
   </section>
 </template>
