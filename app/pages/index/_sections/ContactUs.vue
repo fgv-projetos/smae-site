@@ -71,6 +71,7 @@ import CtaButton from '~/components/CtaButton.vue';
 
 .contact-us__maps {
   margin-top: 1.88rem;
+  margin-bottom: 20%;
   position: relative;
   width: 100%;
   display: block
@@ -151,6 +152,7 @@ import CtaButton from '~/components/CtaButton.vue';
 
   .contact-us__maps {
     margin-top: 5.94rem;
+    margin-bottom: initial;
   }
 
   .map-item {
