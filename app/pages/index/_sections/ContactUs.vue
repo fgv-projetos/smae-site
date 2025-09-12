@@ -26,7 +26,7 @@
 
     <figure class="contact-us__maps">
       <NuxtImg
-        class="map-item-main"
+        class="map-item map-item-main"
         src="maps/map-main.png"
       />
 
@@ -77,20 +77,22 @@ import CtaButton from '~/components/CtaButton.vue';
   display: block
 }
 
+.map-item {
+  border-radius: 5px;
+}
+
 .map-item-main {
   width: 80%;
   height: 100%;
-
-  border-radius: 5px;
 }
 
 .map-item:nth-of-type(2) {
   position: absolute;
   top: -3%;
   right: 0;
+
   width: 35%;
   height: 29%;
-  border-radius: 5px;
 }
 
 .map-item:nth-of-type(3) {
@@ -100,7 +102,6 @@ import CtaButton from '~/components/CtaButton.vue';
 
   width: 47%;
   height: 42%;
-  border-radius: 5px;
 }
 
 .map-item:nth-of-type(4) {
@@ -110,6 +111,48 @@ import CtaButton from '~/components/CtaButton.vue';
 
   width: 45%;
   height: 42%;
-  border-radius: 5px;
+}
+
+@container (width > 1000px) {
+  .map-item {
+    border-radius: 20px;
+  }
+
+  .map-item-main {
+    width: 65%;
+    height: 100%;
+
+    margin-left: 5.38rem;
+  }
+
+  .map-item:nth-of-type(4) {
+    position: absolute;
+    left: initial;
+    top: -4%;
+    right: 0;
+
+    width: 36%;
+    height: 39%;
+  }
+
+  .map-item:nth-of-type(3) {
+    position: absolute;
+    top: initial;
+    right: 0;
+    bottom: -4%;
+
+    width: 46%;
+    height: 45%;
+  }
+
+  .map-item:nth-of-type(2) {
+    position: absolute;
+    top: initial;
+    bottom: -4%;
+    left: 0;
+
+    width: 44%;
+    height: 35%;
+  }
 }
 </style>
