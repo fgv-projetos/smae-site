@@ -9,6 +9,8 @@
 
   <ContactUs />
 
+  <StartToUse />
+
   <div style="height: 200px" />
 </template>
 
@@ -18,6 +20,7 @@ import Advantages from './_sections/Advantages.vue';
 import ContactUs from './_sections/ContactUs.vue';
 import Hero from './_sections/Hero.vue';
 import Modules from './_sections/Modules.vue';
+import StartToUse from './_sections/StartToUse.vue';
 </script>
 
 <style scoped>
