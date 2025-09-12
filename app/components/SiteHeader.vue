@@ -2,11 +2,12 @@
   <header ref="header" :class="['site-header', { 'site-header--is-hide': isTopHided }]">
     <div ref="header-container" class="site-header__container max-section">
       <figure>
-        <img
-          class="site-header__logo"
-          src="~/assets/images/logo.svg"
-          alt="Logo SMAE"
-        >
+        <NuxtLink to="/">
+          <NuxtImg
+            class="site-header__logo"
+            src="logo.svg"
+            alt="Logo SMAE"
+          /></NuxtLink>
       </figure>
 
       <button
@@ -62,7 +63,7 @@ const sections: { label: string, key: string }[] = [
   },
   {
     label: 'Guia para uso',
-    key: 'guia-para-uso',
+    key: 'comece-a-usar',
   },
   {
     label: 'comece a usar',
