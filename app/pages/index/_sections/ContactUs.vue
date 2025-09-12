@@ -9,7 +9,7 @@
         />
       </figure>
 
-      <aside>
+      <aside class="contact-us__description-wrapper">
         <div class="contact-us__description">
           <p>
             A FGV Projetos, especializada em desenvolver soluções e produtos para o setor público, destaca-se por sua contribuição para modernizar estratégias governamentais e fomentar a inovação por meio da transformação digital. Com foco na experiência do usuário, a FGV Projetos contribui para a formação de um ecossistema de tecnologias governamentais.
@@ -51,7 +51,6 @@ import CtaButton from '~/components/CtaButton.vue';
 
 .contact-us__logo {
   min-width: 124px;
-
 }
 
 .contact-us__content {
@@ -114,6 +113,46 @@ import CtaButton from '~/components/CtaButton.vue';
 }
 
 @container (width > 1000px) {
+  .contact-us {
+    padding-top: 5.81rem;
+    padding-bottom: 7.69rem;
+  }
+
+  .contact-us__logo {
+    min-width: 19rem;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .contact-us__content {
+    display: flex;
+    gap: .75rem;
+    justify-content: space-between;
+  }
+
+  .contact-us__description-wrapper {
+    flex-basis: 50%;
+  }
+
+  .contact-us__description {
+    color: $white;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.1rem;
+    flex-basis: 50%;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .contact-us__maps {
+    margin-top: 5.94rem;
+  }
+
   .map-item {
     border-radius: 20px;
   }
