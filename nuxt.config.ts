@@ -2,6 +2,38 @@
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon'],
   devtools: { enabled: true },
+  app: {
+    head: {
+      title: 'SMAE - Sistema de Monitoramento e Acompanhamento Estratégico',
+      // titleTemplate: 'SMAE | ',
+      link: [
+        {
+          rel: 'icon',
+          href: '/favicon-96x96.png',
+          type: 'image/png',
+          sizes: '96x96',
+        },
+        {
+          rel: 'icon',
+          href: '/favicon.svg',
+          type: 'image/svg+xml',
+        },
+        {
+          rel: 'shortcut icon',
+          href: '/favicon.ico',
+        },
+        {
+          rel: 'apple-touch-icon',
+          sizes: '180x180',
+          href: '/apple-touch-icon.png',
+        },
+        {
+          rel: 'manifest',
+          href: '/site.webmanifest',
+        },
+      ],
+    },
+  },
   css: ['~/assets/scss/main.scss'],
   compatibilityDate: '2025-07-15',
   vite: {
