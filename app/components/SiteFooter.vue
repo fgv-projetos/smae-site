@@ -14,9 +14,9 @@
         :key="`link-item--${linkIndex}`"
         class="footer__link-item"
       >
-        <a>
+        <NuxtLink :to="link.link" :target="link.external ? '_blank' : undefined">
           {{ link.label }}
-        </a>
+        </NuxtLink>
       </li>
     </ul>
   </footer>
@@ -31,18 +31,18 @@ const links = [
   },
   {
     label: 'Termos de Uso',
-    link: '',
+    link: { hash: '#comece-a-usar' },
     external: false,
   },
   {
     label: 'Fale Conosco',
-    link: '',
+    link: { hash: '#fale-conosco' },
     external: false,
   },
   {
     label: 'Github',
-    link: '',
-    external: false,
+    link: 'https://github.com/fgv-projetos/smae',
+    external: true,
   },
   {
     label: 'FGV Projetos',
