@@ -1,5 +1,5 @@
 <template>
-  <header ref="header" :class="['site-header', { 'site-header--is-hide': isTopHided }]">
+  <header ref="header" class="site-header">
     <div ref="header-container" class="site-header__container max-section">
       <figure>
         <NuxtLink to="/">
@@ -75,7 +75,6 @@ const headerTemplate = useTemplateRef('header')
 const headerContainerTemplate = useTemplateRef('header-container')
 
 const isMobile = ref(false)
-const isTopHided = ref(false)
 const isMenuVisible = ref(false)
 
 useResizeObserver(
@@ -105,8 +104,6 @@ function handleHideMenu() {
 }
 
 onMounted(() => {
-  let lastScrollTop = window.scrollY;
-
   window.addEventListener(
     'scroll', useDebounceFn(
       () => {
@@ -119,23 +116,12 @@ onMounted(() => {
 
         if (currentScrollTop < 100) {
           // scroll start
-          isTopHided.value = false
           headerTemplate.value.style.position = 'relative'
 
           return
         }
 
         headerTemplate.value.style.position = 'fixed'
-
-        if (currentScrollTop < lastScrollTop) {
-          // scroll up
-          isTopHided.value = true
-        } else if (currentScrollTop > lastScrollTop) {
-          // scroll down
-          isTopHided.value = false
-        }
-
-        lastScrollTop = currentScrollTop;
       }, 25,
     ),
   );
