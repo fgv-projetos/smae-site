@@ -9,7 +9,7 @@
 
   <ContactUs id="fale-conosco" />
 
-  <StartToUse id="comece-a-usar" />
+  <StartToUse id="diretriz-de-uso" />
 </template>
 
 <script lang="ts" setup>

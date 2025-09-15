@@ -11,8 +11,6 @@ export default <RouterConfig>{
     }
     // If a hash is present in the target route, scroll to that element
     if (to.hash) {
-      console.log(to.hash, 200);
-
       return {
         el: to.hash,
         top: 85,

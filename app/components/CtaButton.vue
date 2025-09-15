@@ -3,19 +3,25 @@
     :to="to"
     :class="['cta-button', { 'cta-button--alternative': alternative }]"
     :target="isExternal ? '_blank' : undefined"
+    @click="$emit('click')"
   >{{ label }}</NuxtLink>
 </template>
 
 <script lang="ts" setup>
 import type { RouteLocationRaw } from 'vue-router';
 
+type Emits = {
+  click: () => void
+}
+
 type Props = {
   label: string
-  to: RouteLocationRaw | string
+  to?: RouteLocationRaw | string
   alternative?: boolean
 }
 
 const props = defineProps<Props>()
+defineEmits<Emits>()
 
 const isExternal = computed(() =>
   typeof props.to === 'string' && props.to.includes('://'))
