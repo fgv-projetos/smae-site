@@ -62,12 +62,12 @@ const sections: { label: string, key: string }[] = [
     key: 'fale-conosco',
   },
   {
-    label: 'Guia para uso',
-    key: 'comece-a-usar',
+    label: 'Diretriz para uso',
+    key: 'diretriz-de-uso',
   },
   {
     label: 'comece a usar',
-    key: 'comece-a-usar',
+    key: 'diretriz-de-uso',
   },
 ]
 

@@ -3,7 +3,7 @@
     <article class="article article--guideline">
       <div class="article__container max-section">
         <h2>
-          Diretrizes para uso
+          Diretriz para uso
         </h2>
 
         <p>
@@ -22,7 +22,11 @@
           Conheça os termos antes de baixar os fontes clicando no link abaixo.
         </p>
 
-        <CtaButton label="ler mais" alternative />
+        <CtaButton
+          label="Leia mais"
+          alternative
+          @click="handleClickReadMore"
+        />
 
         <aside class="article-technologies max-section">
           <div class="article-technologies__container">
@@ -47,7 +51,7 @@
         </p>
 
         <p>
-          Consulte as diretrizes para uso ao lado.
+          Consulte as Diretriz para uso ao lado.
         </p>
 
         <p>
@@ -63,6 +67,12 @@
     </article>
   </section>
 </template>
+
+<script lang="ts" setup>
+function handleClickReadMore() {
+  alert('Leia mais')
+}
+</script>
 
 <style lang="scss" scoped>
 .start-to-use {
