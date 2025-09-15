@@ -23,7 +23,7 @@
       <CtaButton
         class="hero__cta"
         label="Comece a usar"
-        :to="{ hash: '#comece-a-usar' }"
+        :to="{ hash: '#diretriz-de-uso' }"
       />
     </div>
   </section>

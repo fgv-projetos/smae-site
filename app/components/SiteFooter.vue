@@ -14,7 +14,10 @@
         :key="`link-item--${linkIndex}`"
         class="footer__link-item"
       >
-        <NuxtLink :to="link.link" :target="link.external ? '_blank' : undefined">
+        <NuxtLink
+          :to="link.link"
+          :target="link.external ? '_blank' : undefined"
+        >
           {{ link.label }}
         </NuxtLink>
       </li>
@@ -31,7 +34,7 @@ const links = [
   },
   {
     label: 'Termos de Uso',
-    link: { hash: '#comece-a-usar' },
+    link: { hash: '#diretriz-de-uso' },
     external: false,
   },
   {
