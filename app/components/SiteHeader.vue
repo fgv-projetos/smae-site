@@ -5,7 +5,7 @@
         <NuxtLink to="/">
           <NuxtImg
             class="site-header__logo"
-            src="logo.svg"
+            src="logo.png"
             alt="Logo SMAE"
           /></NuxtLink>
       </figure>
@@ -153,7 +153,7 @@ onMounted(() => {
 }
 
 .site-header__logo {
-  width: 100%;
+  width: 110px;
   height: 100%;
 }
 

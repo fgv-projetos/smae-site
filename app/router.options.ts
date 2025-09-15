@@ -13,7 +13,7 @@ export default <RouterConfig>{
     if (to.hash) {
       return {
         el: to.hash,
-        top: 85,
+        top: 180,
         behavior: 'smooth',
       };
     }
