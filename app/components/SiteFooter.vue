@@ -43,14 +43,14 @@ const links = [
     external: false,
   },
   {
-    label: 'Github',
-    link: 'https://github.com/fgv-projetos/smae',
-    external: true,
+    label: 'Código Fonte',
+    link: { hash: '#diretriz-de-uso' },
+    external: false,
   },
   {
     label: 'FGV Projetos',
-    link: '',
-    external: false,
+    link: 'https://projetos.fgv.br/',
+    external: true,
   },
 ]
 </script>
