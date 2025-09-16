@@ -62,7 +62,7 @@
           Bem-vindo ao SMAE!
         </p>
 
-        <CtaButton label="Github" to="https://github.com/fgv-projetos/smae" />
+        <CtaButton label="Código Fonte" to="https://github.com/fgv-projetos/smae" />
       </div>
     </article>
   </section>
