@@ -66,14 +66,21 @@ const links = [
 
 .footer__content {
   display: flex;
-  height: 2.69rem;
+  flex-direction: column;
+  max-width: 7.5rem;
   gap: .43rem;
 
   hr {
-    border-width: .5px;
+    border-width: 0;
+    border-bottom-width: 1px;
     border-color: white;
     padding: 2px 0;
   }
+}
+
+.footer__logo-smae {
+  width: 5.65rem;
+  margin: auto;
 }
 
 .footer__links {
@@ -113,6 +120,23 @@ const links = [
 
   .footer__content {
     height: 7.56rem;
+    flex-direction: row;
+    align-items: center;
+
+    hr {
+      height: 100%;
+      border-right-width: 1px;
+    }
+  }
+
+  .footer__logo-smae {
+    width: 17.75rem;
+    max-width: initial;
+  }
+
+  .footer__logo-fgv {
+    max-width: 18.75rem;
+    height: 50px;
   }
 
   .footer__link-item {
