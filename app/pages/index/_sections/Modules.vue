@@ -142,15 +142,15 @@ $iconSize: 196px;
 
 .module-item__title {
   font-weight: 700;
-  font-size: .68rem;
+  font-size: .82rem;
   line-height: 1;
 }
 
 .module-item__description {
   margin-top: .5rem;
   font-weight: 400;
-  font-size: .62rem;
-  line-height: .68rem;
+  font-size: .75rem;
+  line-height: 1;
 }
 
 @container (width > 900px) {
