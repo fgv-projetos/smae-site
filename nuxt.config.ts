@@ -53,6 +53,21 @@ export default defineNuxtConfig({
       stylistic: true,
     },
   },
+  fonts: {
+    provider: 'local',
+    families: [
+      {
+        name: 'Ubuntu',
+        preload: true,
+        src: 'https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,900;1,900&display=swap',
+      },
+      {
+        name: 'Roboto',
+        preload: true,
+        src: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100..900&family=Ubuntu:wght@300;400;500;700&display=swap',
+      },
+    ],
+  },
   icon: {
     customCollections: [
       {
