@@ -5,8 +5,8 @@
         Módulos do SMAE
       </h1>
 
-      <dl class="modules__list">
-        <div
+      <ul class="modules__list">
+        <li
           v-for="(moduleItem, moduleItemIndex) in modules"
           :key="`module-item--${moduleItem.title}`"
           class="module-item"
@@ -17,16 +17,16 @@
           <Icon :name="'icon:'+moduleItem.icon" class="module-item__icon" />
 
           <div class="module-item__container">
-            <dt class="module-item__title">
+            <h5 class="module-item__title">
               {{ moduleItem.title }}
-            </dt>
+            </h5>
 
-            <dd class="module-item__description">
+            <p class="module-item__description">
               {{ moduleItem.description }}
-            </dd>
+            </p>
           </div>
-        </div>
-      </dl>
+        </li>
+      </ul>
     </div>
   </section>
 </template>
