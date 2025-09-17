@@ -37,12 +37,7 @@
   display: flex;
   min-height: 18rem;
 
-  /* Fallback for browsers that don't support image-set() or -webkit-image-set() */
-  background-image: url('~/assets/images/hero.png');
-
-  background-image:
-    -webkit-image-set(url('~/assets/images/hero.png') 1x,
-    url('~/assets/images/hero@2x.png') 2x);
+  background-image: url('~/assets/images/hero.webp');
 
   background-size: 280% 115%;
   background-repeat: no-repeat;
