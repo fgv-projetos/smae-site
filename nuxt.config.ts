@@ -5,6 +5,10 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: 'SMAE - Sistema de Monitoramento e Acompanhamento Estratégico',
+      htmlAttrs: {
+        lang: 'pt-BR',
+        dir: 'ltr',
+      },
       // titleTemplate: 'SMAE | ',
       link: [
         {

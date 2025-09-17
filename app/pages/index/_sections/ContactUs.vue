@@ -4,7 +4,7 @@
       <figure class="contact-us__logo">
         <NuxtImg
           src="logo-fgv.png"
-          alt="FGV Logo"
+          alt="Logo FGV Projetos"
           :size="150"
         />
       </figure>
@@ -28,13 +28,26 @@
       <NuxtImg
         class="map-item map-item-main"
         src="maps/map-main.png"
+        alt="Mapa São Paulo"
       />
 
-      <NuxtImg class="map-item" src="maps/map-2.jpg" />
+      <NuxtImg
+        class="map-item"
+        src="maps/map-2.jpg"
+        alt="gráfico evolução"
+      />
 
-      <NuxtImg class="map-item" src="maps/map-3.png" />
+      <NuxtImg
+        class="map-item"
+        src="maps/map-3.png"
+        alt="Lista de tarefas"
+      />
 
-      <NuxtImg class="map-item" src="maps/map-4.png" />
+      <NuxtImg
+        class="map-item"
+        src="maps/map-4.png"
+        alt="Monitoramento Transferência"
+      />
     </figure>
   </section>
 </template>
