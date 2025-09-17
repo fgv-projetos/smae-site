@@ -20,7 +20,7 @@
           </p>
         </div>
 
-        <CtaButton label="Fale conosco" to="https://projetos.fgv.br/solicitar-proposta" />
+        <CtaButton label="Fale conosco" to="mailto:smae@fgv.br" />
       </aside>
     </article>
 

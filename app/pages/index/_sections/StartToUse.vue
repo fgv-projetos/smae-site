@@ -25,7 +25,7 @@
         <CtaButton
           label="Leia mais"
           alternative
-          @click="handleClickReadMore"
+          to="https://github.com/fgv-projetos/smae/blob/master/LICENSE"
         />
 
         <aside class="article-technologies max-section">
