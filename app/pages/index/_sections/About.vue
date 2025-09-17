@@ -13,9 +13,10 @@
       </article>
 
       <aside class="about__figure">
-        <figure>
-          <NuxtImg />
-        </figure>
+        <NuxtImg class="about__device-frame" src="device-frame.png" />
+        <video class="about__video" controls>
+          <!-- <source src="~/assets/videos/SMAE-PT BR- S LEG 1.mp4" type="video/mp4"> -->
+        </video>
       </aside>
     </div>
   </section>
@@ -45,10 +46,34 @@
 }
 
 .about__figure {
+  margin: 0 auto;
+  max-width: 400px;
+
   margin-top: .75rem;
   width: 100%;
-  height: 150px;
-  background-color: rgba(255, 0, 0, 0.251);
+  height: 100%;
+
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.about__device-frame {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: rotate(180deg);
+}
+
+.about__video {
+  width: 100%;
+  height: 160px;
+  background-color: #000;
+  margin: 13px 8px;
+  border-radius: 15px;
 }
 
 @container (width > 1000px) {
@@ -79,8 +104,17 @@
 
   .about__figure {
     flex-basis: 100%;
-    /* width: 60%; */
+
     height: 330px;
+    min-width: 530px;
+    max-width: 700px;
+  }
+
+  .about__video {
+    width: 100%;
+    height: 285px;
+    margin: 0 15px;
+    border-radius: 25px;
   }
 }
 </style>
