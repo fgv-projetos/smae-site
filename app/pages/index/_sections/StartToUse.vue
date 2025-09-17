@@ -62,7 +62,7 @@
           Bem-vindo ao SMAE!
         </p>
 
-        <CtaButton label="Github" to="https://github.com/fgv-projetos/smae" />
+        <CtaButton label="Código Fonte" to="https://github.com/fgv-projetos/smae" />
       </div>
     </article>
   </section>
@@ -81,7 +81,7 @@ function handleClickReadMore() {
 
 .article {
   h2 {
-    color: $primary-50;
+    color: $gray-800;
     margin-bottom: .5rem;
     font-weight: 700;
     font-size: .81rem;
@@ -108,6 +108,12 @@ function handleClickReadMore() {
   padding-bottom: 66px;
   background-color: $white;
   margin-bottom: 32px;
+}
+
+.article--start {
+  h2 {
+    color: $primary-50;
+  }
 }
 
 .article-technologies {

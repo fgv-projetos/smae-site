@@ -50,11 +50,13 @@ import CtaButton from '~/components/CtaButton.vue';
 }
 
 .contact-us__logo {
-  min-width: 124px;
+  width: 100%;
+  max-width: 7.25rem;
 }
 
 .contact-us__content {
   display: flex;
+  flex-direction: column;
   gap: .75rem;
 }
 
@@ -120,7 +122,8 @@ import CtaButton from '~/components/CtaButton.vue';
   }
 
   .contact-us__logo {
-    min-width: 19rem;
+    width: 100%;
+    max-width: 27rem;
     margin: 0 auto;
 
     img {
@@ -130,6 +133,7 @@ import CtaButton from '~/components/CtaButton.vue';
 
   .contact-us__content {
     display: flex;
+    flex-direction: row;
     gap: .75rem;
     justify-content: space-between;
   }
