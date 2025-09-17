@@ -37,7 +37,7 @@
 }
 
 .about__title {
-  color: $primary-50;
+  color: $gray-800;
   font-weight: 700;
   font-size: .81rem;
   line-height: 1rem;
