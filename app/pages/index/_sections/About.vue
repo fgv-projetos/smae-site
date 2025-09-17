@@ -13,7 +13,11 @@
       </article>
 
       <aside class="about__figure">
-        <NuxtImg class="about__device-frame" src="device-frame.png" />
+        <NuxtImg
+          class="about__device-frame"
+          src="device-frame.png"
+          alt="Estrutura de smarthphone"
+        />
         <video class="about__video" controls>
           <!-- <source src="~/assets/videos/SMAE-PT BR- S LEG 1.mp4" type="video/mp4"> -->
         </video>

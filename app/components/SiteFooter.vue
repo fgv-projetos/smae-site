@@ -1,11 +1,19 @@
 <template>
   <footer class="footer max-section">
     <div class="footer__content">
-      <NuxtImg class="footer__logo-smae" src="smae-logo.png" />
+      <NuxtImg
+        class="footer__logo-smae"
+        src="smae-logo.png"
+        alt="Logo Smae"
+      />
 
       <hr>
 
-      <NuxtImg class="footer__logo-fgv" src="logo-fgv.png" />
+      <NuxtImg
+        class="footer__logo-fgv"
+        src="logo-fgv.png"
+        alt="Logo FGV Projetos"
+      />
     </div>
 
     <ul class="footer__links">
