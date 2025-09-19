@@ -68,12 +68,6 @@
   </section>
 </template>
 
-<script lang="ts" setup>
-function handleClickReadMore() {
-  alert('Leia mais')
-}
-</script>
-
 <style lang="scss" scoped>
 .start-to-use {
   margin-top: 33px;
