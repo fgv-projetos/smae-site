@@ -16,7 +16,7 @@
         <ClientOnly>
           <iframe
             class="about__video"
-            src="https://www.youtube.com/embed/UCtfFq2z1Xg"
+            :src="`https://www.youtube.com/embed/UCtfFq2z1Xg?autoplay=${autoplay}`"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin"
             frameborder="0"
@@ -74,8 +74,6 @@ function handleFocus() {
 }
 
 .about__video {
-  position: absolute;
-  z-index: 100;
   background-color: #000;
 
   width: 100%;
