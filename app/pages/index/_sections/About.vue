@@ -13,17 +13,15 @@
       </article>
 
       <aside class="about__figure">
-        <NuxtImg
-          class="about__device-frame"
-          src="device-frame.png"
-          alt="Estrutura de smarthphone"
-        />
-
-        <iframe
-          :src="`https://drive.google.com/file/d/1r7Z72joD5TmWqUP53YVeeXjYVCaoXpgn/preview?autoplay=${autoplay}`"
-          frameborder="0"
-          class="about__video"
-        />
+        <ClientOnly>
+          <iframe
+            class="about__video"
+            src="https://www.youtube.com/embed/UCtfFq2z1Xg"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            frameborder="0"
+          />
+        </ClientOnly>
       </aside>
     </div>
   </section>
@@ -75,23 +73,14 @@ function handleFocus() {
   align-items: center;
 }
 
-.about__device-frame {
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transform: rotate(180deg);
-}
-
 .about__video {
   position: absolute;
   z-index: 100;
   background-color: #000;
 
-  max-width: 296px;
   width: 100%;
-  height: 161px;
-  border-radius: 13px;
+  height: 100%;
+  border-radius: 12px;
 }
 
 @container (width > 1000px) {
@@ -123,31 +112,16 @@ function handleFocus() {
   .about__figure {
     flex-basis: 100%;
 
-    min-width: 470px;
-    max-width: 470px;
+    max-width: 700px;
     height: 330px;
   }
 
   .about__video {
-    max-width: 443px;
-    height: 285px;
-    border-radius: 20px;
+    height: 100%;
+    border-radius: 23px;
   }
 }
 
 @container (width > 1200px) {
-  .about__figure {
-    flex-basis: 100%;
-
-    min-width: 635px;
-    max-width: 635px;
-    height: 330px;
-  }
-
-  .about__video {
-    max-width: 600px;
-    height: 285px;
-    border-radius: 23px;
-  }
 }
 </style>
