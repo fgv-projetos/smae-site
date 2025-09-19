@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section class="about" @mouseenter.once="handleFocus">
     <div class="about__conteiner max-section">
       <article class="about__content">
         <h1 class="about__title">
@@ -18,13 +18,24 @@
           src="device-frame.png"
           alt="Estrutura de smarthphone"
         />
-        <video class="about__video" controls>
-          <!-- <source src="~/assets/videos/SMAE-PT BR- S LEG 1.mp4" type="video/mp4"> -->
-        </video>
+
+        <iframe
+          :src="`https://drive.google.com/file/d/1r7Z72joD5TmWqUP53YVeeXjYVCaoXpgn/preview?autoplay=${autoplay}`"
+          frameborder="0"
+          class="about__video"
+        />
       </aside>
     </div>
   </section>
 </template>
+
+<script lang="ts" setup>
+const autoplay = ref(0)
+
+function handleFocus() {
+  autoplay.value = 1
+}
+</script>
 
 <style lang="scss" scoped>
 .about {
@@ -51,11 +62,11 @@
 
 .about__figure {
   margin: 0 auto;
-  max-width: 400px;
 
   margin-top: .75rem;
+  max-width: 314px;
   width: 100%;
-  height: 100%;
+  height: 186px;
 
   position: relative;
 
@@ -73,11 +84,14 @@
 }
 
 .about__video {
-  width: 100%;
-  height: 160px;
+  position: absolute;
+  z-index: 100;
   background-color: #000;
-  margin: 13px 8px;
-  border-radius: 15px;
+
+  max-width: 296px;
+  width: 100%;
+  height: 161px;
+  border-radius: 13px;
 }
 
 @container (width > 1000px) {
@@ -109,16 +123,31 @@
   .about__figure {
     flex-basis: 100%;
 
+    min-width: 470px;
+    max-width: 470px;
     height: 330px;
-    min-width: 530px;
-    max-width: 700px;
   }
 
   .about__video {
-    width: 100%;
+    max-width: 443px;
     height: 285px;
-    margin: 0 15px;
-    border-radius: 25px;
+    border-radius: 20px;
+  }
+}
+
+@container (width > 1200px) {
+  .about__figure {
+    flex-basis: 100%;
+
+    min-width: 635px;
+    max-width: 635px;
+    height: 330px;
+  }
+
+  .about__video {
+    max-width: 600px;
+    height: 285px;
+    border-radius: 23px;
   }
 }
 </style>
