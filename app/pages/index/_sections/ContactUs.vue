@@ -20,7 +20,7 @@
           </p>
         </div>
 
-        <CtaButton label="Fale conosco" to="mailto:smae@fgv.br" />
+        <CtaButton label="Fale conosco" :to="{ name: 'fale-conosco' }" />
       </aside>
     </article>
 
