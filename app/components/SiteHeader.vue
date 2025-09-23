@@ -110,6 +110,10 @@ onMounted(() => {
   window.addEventListener(
     'scroll', useDebounceFn(
       () => {
+        if (!isMobile.value) {
+          return
+        }
+
         if (!headerTemplate.value) {
           return
         }
@@ -117,7 +121,7 @@ onMounted(() => {
         isMenuVisible.value = false
         const currentScrollTop = window.scrollY;
 
-        if (currentScrollTop < 100) {
+        if (currentScrollTop < 150) {
           // scroll start
           headerTemplate.value.style.position = 'relative'
 
