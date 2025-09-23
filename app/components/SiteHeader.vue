@@ -31,7 +31,10 @@
           v-for="section in sections"
           :key="`section--${section.key}`"
           class="site-header__item"
-          :to="`#${section.key}`"
+          :to="{
+            name: 'index',
+            hash: `#${section.key}`,
+          }"
           @click="handleHideMenu"
         >
           {{ section.label }}

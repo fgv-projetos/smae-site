@@ -1,10 +1,13 @@
 <template>
-  <NuxtLink
+  <component
+    :is="to ? 'NuxtLink' : 'button'"
     :to="to"
     :class="['cta-button', { 'cta-button--alternative': alternative }]"
     :target="isExternal ? '_blank' : undefined"
     @click="$emit('click')"
-  >{{ label }}</NuxtLink>
+  >
+    {{ label }}
+  </component>
 </template>
 
 <script lang="ts" setup>
@@ -18,6 +21,7 @@ type Props = {
   label: string
   to?: RouteLocationRaw | string
   alternative?: boolean
+  type?: 'button' | 'submit'
 }
 
 const props = defineProps<Props>()
