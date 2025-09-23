@@ -132,13 +132,12 @@ $iconSize: 196px;
 
 .module-item__icon {
   position: absolute;
-  height: 100%;
 
   right: 0;
   top: 0;
 
   width: $iconSize;
-  height: $iconSize;
+  height: 100%;
 
   display: flex;
   align-self: center;
