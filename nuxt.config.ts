@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon'],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon', 'nuxt-mail'],
   devtools: { enabled: true },
   app: {
     head: {
@@ -91,5 +91,22 @@ export default defineNuxtConfig({
     // force ipx, as otherwise it would default to using Netlify Image CDN (which probably is better to use, but issue is about ipx)
     provider: 'ipx',
     domains: ['smae-site.netlify.app'],
+  },
+  mail: {
+    message: {
+      to: 'gustavo.soares@fgv.br',
+    },
+    smtp: {
+      host: 'smtp.office365.com',
+      secureConnection: false, // TLS requires secureConnection to be false
+      port: 587,
+      auth: {
+        user: 'gustavo.soares@fgv.br',
+        pass: 'K$N*6#GoS6DgD5',
+      },
+      tls: {
+        ciphers: 'SSLv3',
+      },
+    },
   },
 });

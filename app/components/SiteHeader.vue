@@ -31,7 +31,10 @@
           v-for="section in sections"
           :key="`section--${section.key}`"
           class="site-header__item"
-          :to="`#${section.key}`"
+          :to="{
+            name: 'index',
+            hash: `#${section.key}`,
+          }"
           @click="handleHideMenu"
         >
           {{ section.label }}
@@ -107,6 +110,10 @@ onMounted(() => {
   window.addEventListener(
     'scroll', useDebounceFn(
       () => {
+        if (!isMobile.value) {
+          return
+        }
+
         if (!headerTemplate.value) {
           return
         }
@@ -114,7 +121,7 @@ onMounted(() => {
         isMenuVisible.value = false
         const currentScrollTop = window.scrollY;
 
-        if (currentScrollTop < 100) {
+        if (currentScrollTop < 150) {
           // scroll start
           headerTemplate.value.style.position = 'relative'
 

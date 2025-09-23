@@ -1,14 +1,19 @@
 <template>
-  <NuxtLink
+  <component
+    :is="to ? NuxtLink : 'button'"
     :to="to"
     :class="['cta-button', { 'cta-button--alternative': alternative }]"
     :target="isExternal ? '_blank' : undefined"
     @click="$emit('click')"
-  >{{ label }}</NuxtLink>
+  >
+    {{ label }}
+  </component>
 </template>
 
 <script lang="ts" setup>
 import type { RouteLocationRaw } from 'vue-router';
+
+const NuxtLink = resolveComponent('NuxtLink');
 
 type Emits = {
   click: () => void
@@ -18,6 +23,7 @@ type Props = {
   label: string
   to?: RouteLocationRaw | string
   alternative?: boolean
+  type?: 'button' | 'submit'
 }
 
 const props = defineProps<Props>()
@@ -30,12 +36,12 @@ const isExternal = computed(() =>
 <style lang="scss" scoped>
 .cta-button {
   display: inline-block;
-  padding: 6px 12px;
+  padding: 13px 24px;
   background-color: $primary-50;
   color: $gray-800;
   border-radius: 50.02px;
-  font-size: .43rem;
-  line-height: .8rem;
+  font-size: .75rem;
+  line-height: 1.31rem;
   text-transform: uppercase;
   font-family: Roboto;
   font-weight: 900;
