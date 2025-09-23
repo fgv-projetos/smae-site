@@ -79,11 +79,10 @@ function handleSubmit(ev: SubmitEvent) {
 <style lang="scss" scoped>
 .contact-us {
   h1 {
-    margin-top: 34px;
     color: $primary-50;
     text-align: center;
     font-weight: 700;
-    font-size: 2.5rem;
+    font-size: 1.25rem;
     line-height: 4.25rem;
   }
 
@@ -92,7 +91,7 @@ function handleSubmit(ev: SubmitEvent) {
     align-items: center;
     flex-direction: column;
     gap: 1.44rem;
-    padding: 50px 25px 70px;
+    padding:  20px 25px 12px;
   }
 }
 
@@ -109,6 +108,17 @@ function handleSubmit(ev: SubmitEvent) {
 }
 
 @container (width > 1000px) {
+  .contact-us {
+    h1 {
+      margin-top: 34px;
+      font-size: 2.5rem;
+    }
+
+    form {
+      padding: 50px 25px 70px;
+    }
+  }
+
   .form-group {
     flex-direction: row;
     gap: 3.13rem;
