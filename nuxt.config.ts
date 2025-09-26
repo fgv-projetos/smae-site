@@ -50,6 +50,14 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/scss/main.scss'],
+  runtimeConfig: {
+    email: {
+      driver: import.meta.env.FGV_EMAIL_DRIVER !== '' ? import.meta.env.FGV_EMAIL_DRIVER : 'ethereal',
+      host: import.meta.env.FGV_EMAIL_HOST,
+      port: import.meta.env.FGV_EMAIL_POST,
+      user: import.meta.env.FGV_EMAIL_USER,
+    },
+  },
   compatibilityDate: '2025-07-15',
   vite: {
     css: {

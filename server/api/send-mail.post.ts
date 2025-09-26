@@ -2,14 +2,29 @@ import nodemailer, { type Transporter } from 'nodemailer'
 import getEmailTemplateService from './_email-service/services/getEmailTemplateService'
 
 async function initEmailTransporter(): Promise<Transporter> {
-  const account = await nodemailer.createTestAccount()
+  const { email: emailEnvironment } = useRuntimeConfig()
+
+  if (emailEnvironment.driver !== 'fgv') {
+    const account = await nodemailer.createTestAccount()
+    const transporter = nodemailer.createTransport({
+      host: account.smtp.host,
+      port: account.smtp.port,
+      secure: account.smtp.secure,
+      auth: {
+        user: account.user,
+        pass: account.pass,
+      },
+    })
+
+    return transporter
+  }
+
   const transporter = nodemailer.createTransport({
-    host: account.smtp.host,
-    port: account.smtp.port,
-    secure: account.smtp.secure,
+    host: emailEnvironment.host,
+    port: emailEnvironment.port,
+    secure: true,
     auth: {
-      user: account.user,
-      pass: account.pass,
+      user: emailEnvironment.user,
     },
   })
 
