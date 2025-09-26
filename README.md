@@ -38,38 +38,30 @@ yarn dev
 bun run dev
 ```
 
-## Production
+## How to Deploy
 
 Build the application for production:
 
 ```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
+# Fill .env variables
+FGV_EMAIL_DRIVER='fgv'
+FGV_EMAIL_HOST=''
+FGV_EMAIL_PORT=''
+FGV_EMAIL_USER=''
 ```
-
-Locally preview production build:
 
 ```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
+# Run
+npm run build
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+```bash
+execute file:
+.output/server/index.mjs
+```
+
+Docs: https://nuxt.com/docs/3.x/getting-started/deployment
+
+```
+
+```
