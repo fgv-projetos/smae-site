@@ -55,25 +55,16 @@ function handleSubmit(ev: SubmitEvent) {
     email: formData.get('email'),
     subject: formData.get('subject'),
     description: formData.get('description'),
-  }
+  };
 
-  // const a = {} as
-
-  // mail.send({
-  //   from: 'John Doe',
-  //   subject: 'Incredible',
-  //   text: 'This is an incredible test message',
-  // });
-}
-
-// onMounted(() => {
-//   $mail.send({
-//     from: 'sender@example.com',
-//     to: 'recipient@example.com',
-//     subject: 'Test message',
-//     text: 'I hope this message gets delivered!',
-//   })
-// })
+  $fetch(
+    '/api/send-mail',
+    {
+      method: 'POST',
+      body: data,
+    },
+  )
+};
 </script>
 
 <style lang="scss" scoped>

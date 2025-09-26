@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon', 'nuxt-mail'],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon'],
   devtools: { enabled: true },
   app: {
     head: {
