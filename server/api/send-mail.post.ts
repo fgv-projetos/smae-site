@@ -15,7 +15,14 @@ async function initEmailTransporter(): Promise<Transporter> {
   return transporter
 }
 
-export default defineEventHandler(async (event) => {
+type DebugResponse = {
+  debug: {
+    id: string
+    url: string
+  }
+}
+
+export default defineEventHandler(async (event): Promise<DebugResponse | undefined> => {
   type RequestBody = {
     name: string
     email: string
@@ -57,8 +64,16 @@ export default defineEventHandler(async (event) => {
     `,
   })
 
-  console.log('Message sent: %s', message.messageId)
-  console.log('Message URL: (Clique Aqui) %s', nodemailer.getTestMessageUrl(message))
+  const testUrl = nodemailer.getTestMessageUrl(message)
 
-  return { a: 'Hello Nitro' }
+  if (!testUrl) {
+    return
+  }
+
+  return {
+    debug: {
+      id: message.messageId as string,
+      url: testUrl,
+    },
+  }
 })

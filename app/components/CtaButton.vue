@@ -4,8 +4,16 @@
     :to="to"
     :class="['cta-button', { 'cta-button--alternative': alternative }]"
     :target="isExternal ? '_blank' : undefined"
+    :aria-disabled="loading"
     @click="$emit('click')"
   >
+    <Icon
+      v-if="loading"
+      name="icon:loading"
+      size="18"
+      class="cta-button__icon"
+    />
+
     {{ label }}
   </component>
 </template>
@@ -23,6 +31,7 @@ type Props = {
   label: string
   to?: RouteLocationRaw | string
   alternative?: boolean
+  loading?: boolean
   type?: 'button' | 'submit'
 }
 
@@ -35,7 +44,7 @@ const isExternal = computed(() =>
 
 <style lang="scss" scoped>
 .cta-button {
-  display: inline-block;
+  display: inline-flex;
   padding: 13px 24px;
   background-color: $primary-50;
   color: $gray-800;
@@ -47,6 +56,7 @@ const isExternal = computed(() =>
   font-weight: 900;
   letter-spacing: 1px;
   cursor: pointer;
+  gap: 8px;
 
   @container (width > 1000px) {
     padding: 12px 24px;
@@ -58,5 +68,24 @@ const isExternal = computed(() =>
 .cta-button--alternative {
   background-color: $gray-800;
   color: $primary-50;
+}
+
+.cta-button[aria-disabled=true] {
+  opacity: 0.7;
+  cursor: wait;
+}
+
+@keyframes rotate {
+  from{
+    transform: rotate(0deg);
+  }
+
+  to{
+    transform: rotate(360deg);
+  }
+}
+
+.cta-button__icon {
+  animation: rotate 2s linear infinite;
 }
 </style>
