@@ -49,8 +49,6 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
   const body: RequestBody = await readBody(event)
   const client = await initEmailTransporter()
 
-  return { ok: true }
-
   const organizationEmailPromise = client.sendMail({
     from: {
       name: body.name,
