@@ -64,17 +64,24 @@ export default defineNuxtConfig({
     },
   },
   fonts: {
-    provider: 'local',
     families: [
       {
         name: 'Ubuntu',
+        provider: 'google',
         preload: true,
-        src: 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap',
+        weight: '300...700',
+        styles: ['normal'],
+        subsets: ['latin'],
+        display: 'swap',
       },
       {
         name: 'Roboto',
+        provider: 'google',
         preload: true,
-        src: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100..900',
+        weight: [700, 900],
+        styles: ['normal'],
+        subsets: ['latin'],
+        display: 'swap',
       },
     ],
   },
