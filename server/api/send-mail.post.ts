@@ -1,4 +1,5 @@
 import nodemailer, { type Transporter } from 'nodemailer'
+import getEmailTemplateService from './_email-service/services/getEmailTemplateService'
 
 async function initEmailTransporter(): Promise<Transporter> {
   const account = await nodemailer.createTestAccount()
@@ -19,7 +20,7 @@ type DebugResponse = {
   debug: {
     id: string
     url: string
-  }
+  }[]
 }
 
 export default defineEventHandler(async (event): Promise<DebugResponse | undefined> => {
@@ -33,7 +34,7 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
   const body: RequestBody = await readBody(event)
   const client = await initEmailTransporter()
 
-  const message = await client.sendMail({
+  const organizationEmailPromise = client.sendMail({
     from: {
       name: body.name,
       address: body.email,
@@ -43,6 +44,7 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
       address: 'smae@fgv.com',
     },
     subject: `Contato: Site SMAE - ${body.subject}`,
+    attachments: [],
     html: `
       <h1>Solicitação de proposta - ${body.subject}</h1>
       
@@ -64,16 +66,39 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
     `,
   })
 
-  const testUrl = nodemailer.getTestMessageUrl(message)
+  const receivedEmailTemplate = await getEmailTemplateService('received-email.template.html')
 
+  const costumerEmailPromise = client.sendMail({
+    from: {
+      name: 'Equipe SMAE Projetos',
+      address: 'smae@fgv.com',
+    },
+    to: {
+      name: body.name,
+      address: body.email,
+    },
+    subject: `SMAE - Contato recebido`,
+    attachments: receivedEmailTemplate.attachments,
+    html: receivedEmailTemplate.template,
+  })
+
+  const [organization, costumer] = await Promise.all([organizationEmailPromise, costumerEmailPromise])
+
+  const testUrl = nodemailer.getTestMessageUrl(organization)
   if (!testUrl) {
     return
   }
 
   return {
-    debug: {
-      id: message.messageId as string,
-      url: testUrl,
-    },
+    debug: [
+      {
+        id: organization.messageId as string,
+        url: nodemailer.getTestMessageUrl(organization) as string,
+      },
+      {
+        id: costumer.messageId as string,
+        url: nodemailer.getTestMessageUrl(costumer) as string,
+      },
+    ],
   }
 })

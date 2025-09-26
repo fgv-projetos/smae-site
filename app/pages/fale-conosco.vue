@@ -45,9 +45,21 @@
           sua mensagem foi enviada com sucesso. Nossa equipe irá analisá-la e retornaremos o contato em breve.
         </p>
 
-        <small v-if="debug">
+        <small v-if="debug.length">
           Link para depuração:
-          <a :href="debug" target="_blank">{{ debug }}</a>
+
+          <ul>
+            <li
+              v-for="itemDebug in debug"
+              :key="itemDebug.id"
+            >
+              <a
+
+                :href="itemDebug.url"
+                target="_blank"
+              >{{ itemDebug.url }}</a>
+            </li>
+          </ul>
         </small>
 
         <CtaButton label="Voltar ao início" :to="{ name: 'index' }" />
@@ -61,7 +73,7 @@ import CtaButton from '~/components/CtaButton.vue';
 import FieldInput from '~/components/FieldInput.vue';
 
 const loading = ref<boolean>(false)
-const debug = ref<string>('')
+const debug = ref<{ id: string, url: string | false }[]>([])
 const sent = ref<{ status: boolean, error: boolean }>({
   status: false,
   error: false,
@@ -93,7 +105,7 @@ async function handleSubmit(ev: SubmitEvent) {
     )
 
     if (response?.debug) {
-      debug.value = response.debug.url
+      debug.value = response.debug
     }
 
     sent.value = {
