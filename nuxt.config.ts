@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon', 'nuxt-mail'],
+  modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon'],
   devtools: { enabled: true },
   app: {
     head: {
@@ -17,6 +17,11 @@ export default defineNuxtConfig({
       },
       // titleTemplate: 'SMAE | ',
       link: [
+        {
+          rel: 'manifest',
+          href: '/site.webmanifest',
+        },
+
         {
           rel: 'icon',
           href: '/favicon-96x96.png',
@@ -64,17 +69,24 @@ export default defineNuxtConfig({
     },
   },
   fonts: {
-    provider: 'local',
     families: [
       {
         name: 'Ubuntu',
+        provider: 'google',
         preload: true,
-        src: 'https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap',
+        weight: '300...700',
+        styles: ['normal'],
+        subsets: ['latin'],
+        display: 'swap',
       },
       {
         name: 'Roboto',
+        provider: 'google',
         preload: true,
-        src: 'https://fonts.googleapis.com/css2?family=Roboto:wght@100..900',
+        weight: [700, 900],
+        styles: ['normal'],
+        subsets: ['latin'],
+        display: 'swap',
       },
     ],
   },
@@ -109,4 +121,4 @@ export default defineNuxtConfig({
       },
     },
   },
-});
+})

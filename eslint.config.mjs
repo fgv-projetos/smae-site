@@ -8,6 +8,7 @@ export default withNuxt({
     'vue/require-default-prop': 'off',
     'vue/no-multiple-template-root': 'off',
     'vue/attribute-hyphenation': 'off',
+    '@stylistic/member-delimiter-style': 'error',
     'vue/max-attributes-per-line': [
       'error',
       {

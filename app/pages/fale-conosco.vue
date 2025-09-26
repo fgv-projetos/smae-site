@@ -4,6 +4,7 @@
 
     <div class="contact-us__container">
       <form
+        v-if="!sent.status"
         class="max-section"
         method="get"
         @submit.prevent="handleSubmit"
@@ -30,8 +31,27 @@
           label="Enviar"
           alternative
           type="submit"
+          :loading="loading"
         />
       </form>
+
+      <article v-else class="contact-us__sent-message">
+        <p v-if="sent.error">
+          Ops! Algo deu errado e não conseguimos enviar seu e-mail. <br>Tente de novo mais tarde.
+        </p>
+
+        <p v-else>
+          Olá,
+          sua mensagem foi enviada com sucesso. Nossa equipe irá analisá-la e retornaremos o contato em breve.
+        </p>
+
+        <small v-if="debug">
+          Link para depuração:
+          <a :href="debug" target="_blank">{{ debug }}</a>
+        </small>
+
+        <CtaButton label="Voltar ao início" :to="{ name: 'index' }" />
+      </article>
     </div>
   </section>
 </template>
@@ -40,10 +60,14 @@
 import CtaButton from '~/components/CtaButton.vue';
 import FieldInput from '~/components/FieldInput.vue';
 
-// const { $mail } = useNuxtApp();
-// const mail = useMail()
+const loading = ref<boolean>(false)
+const debug = ref<string>('')
+const sent = ref<{ status: boolean, error: boolean }>({
+  status: false,
+  error: false,
+})
 
-function handleSubmit(ev: SubmitEvent) {
+async function handleSubmit(ev: SubmitEvent) {
   if (!ev.target) {
     return
   }
@@ -55,25 +79,38 @@ function handleSubmit(ev: SubmitEvent) {
     email: formData.get('email'),
     subject: formData.get('subject'),
     description: formData.get('description'),
+  };
+
+  try {
+    loading.value = true
+
+    const response = await $fetch(
+      '/api/send-mail',
+      {
+        method: 'POST',
+        body: data,
+      },
+    )
+
+    if (response?.debug) {
+      debug.value = response.debug.url
+    }
+
+    sent.value = {
+      status: true,
+      error: false,
+    }
+  } catch (e) {
+    console.error(e)
+
+    sent.value = {
+      status: true,
+      error: true,
+    }
+  } finally {
+    loading.value = false
   }
-
-  // const a = {} as
-
-  // mail.send({
-  //   from: 'John Doe',
-  //   subject: 'Incredible',
-  //   text: 'This is an incredible test message',
-  // });
-}
-
-// onMounted(() => {
-//   $mail.send({
-//     from: 'sender@example.com',
-//     to: 'recipient@example.com',
-//     subject: 'Test message',
-//     text: 'I hope this message gets delivered!',
-//   })
-// })
+};
 </script>
 
 <style lang="scss" scoped>
@@ -84,14 +121,6 @@ function handleSubmit(ev: SubmitEvent) {
     font-weight: 700;
     font-size: 1.25rem;
     line-height: 4.25rem;
-  }
-
-  form {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    gap: 1.44rem;
-    padding:  20px 25px 12px;
   }
 }
 
@@ -105,6 +134,27 @@ function handleSubmit(ev: SubmitEvent) {
 
 .contact-us__container {
   background-color: $white;
+
+  > * {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.44rem;
+    padding:  20px 25px 12px;
+  }
+}
+
+.contact-us__sent-message {
+  min-height: 55vh;
+
+  p {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  small a {
+    color: blue;
+  }
 }
 
 @container (width > 1000px) {
@@ -113,8 +163,10 @@ function handleSubmit(ev: SubmitEvent) {
       margin-top: 34px;
       font-size: 2.5rem;
     }
+  }
 
-    form {
+  .contact-us__container {
+    > * {
       padding: 50px 25px 70px;
     }
   }
@@ -122,6 +174,16 @@ function handleSubmit(ev: SubmitEvent) {
   .form-group {
     flex-direction: row;
     gap: 3.13rem;
+  }
+
+  .contact-us__sent-message {
+    min-height: 50vh;
+
+    p {
+      font-size: 1.75rem;
+      max-width: 50vw;
+      text-align: center;
+    }
   }
 }
 </style>
