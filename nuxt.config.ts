@@ -18,6 +18,11 @@ export default defineNuxtConfig({
       // titleTemplate: 'SMAE | ',
       link: [
         {
+          rel: 'manifest',
+          href: '/site.webmanifest',
+        },
+
+        {
           rel: 'icon',
           href: '/favicon-96x96.png',
           type: 'image/png',
@@ -116,4 +121,4 @@ export default defineNuxtConfig({
       },
     },
   },
-});
+})
