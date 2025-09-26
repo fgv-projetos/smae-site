@@ -143,7 +143,7 @@ const links = [
   }
 
   .footer__logo-fgv {
-    max-width: 18.75rem;
+    max-width: 27rem;
     height: 50px;
   }
 
