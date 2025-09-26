@@ -15,8 +15,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+* {
+  font-family: 'Ubuntu', 'Roboto', sans-serif;
+}
+
 body {
-  font-family: Ubuntu, Roboto;
   background-color: $gray-800;
   color: $gray-800;
 }
