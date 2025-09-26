@@ -46,7 +46,6 @@ async function getEmailTemplateService(fileName: string): Promise<Response> {
     }
   })
 
-  console.log(computedAttachmentsData)
   return {
     template,
     attachments: computedAttachmentsData,
