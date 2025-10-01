@@ -61,7 +61,3 @@ execute file:
 ```
 
 Docs: https://nuxt.com/docs/3.x/getting-started/deployment
-
-```
-
-```
