@@ -16,10 +16,15 @@ function handleAccessSourceCode(ev: SubmitEvent) {
     acceptTerms: acceptTerms.value,
   };
 
-  console.log(data);
-
   window.open(
     'https://github.com/fgv-projetos/smae', '_blank',
+  )
+
+  $fetch(
+    '/api/access-source-code', {
+      body: data,
+      method: 'POST',
+    },
   )
 }
 </script>
