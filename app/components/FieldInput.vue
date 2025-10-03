@@ -48,6 +48,7 @@ withDefaults(
 }
 
 .field-input__input {
+  background-color: $white;
   border: 1.5px solid #E3E5E8;
   border-radius: 4px;
   padding: 12px 16px;

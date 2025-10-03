@@ -2,9 +2,14 @@
   <component
     :is="to ? NuxtLink : 'button'"
     :to="to"
-    :class="['cta-button', { 'cta-button--alternative': alternative }]"
+    :class="[
+      'cta-button',
+      { 'cta-button--alternative': alternative },
+      { 'cta-button--loading': loading },
+      { 'cta-button--disabled': disabled },
+    ]"
     :target="isExternal ? '_blank' : undefined"
-    :aria-disabled="loading"
+    :aria-disabled="loading || disabled"
     @click="$emit('click')"
   >
     <Icon
@@ -33,6 +38,7 @@ type Props = {
   alternative?: boolean
   loading?: boolean
   type?: 'button' | 'submit'
+  disabled?: boolean
 }
 
 const props = defineProps<Props>()
@@ -45,6 +51,7 @@ const isExternal = computed(() =>
 <style lang="scss" scoped>
 .cta-button {
   display: inline-flex;
+  justify-content: center;
   padding: 13px 24px;
   background-color: $primary-50;
   color: $gray-800;
@@ -58,6 +65,8 @@ const isExternal = computed(() =>
   cursor: pointer;
   gap: 8px;
 
+  transition: all .2s ease-in;
+
   @container (width > 1000px) {
     padding: 12px 24px;
     font-size: .75rem;
@@ -70,9 +79,15 @@ const isExternal = computed(() =>
   color: $primary-50;
 }
 
-.cta-button[aria-disabled=true] {
+.cta-button--loading {
   opacity: 0.7;
   cursor: wait;
+}
+
+.cta-button--disabled {
+  background-color: $gray-50;
+  color: $gray-300;
+  cursor: initial;
 }
 
 @keyframes rotate {
