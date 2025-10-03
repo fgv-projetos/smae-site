@@ -37,8 +37,8 @@
 const links = [
   {
     label: 'Política de Privacidade',
-    link: '',
-    external: false,
+    link: 'https://portal.fgv.br/sites/default/files/avisos/2025.05.28-aviso-de-privacidade-portais-fgv.pdf',
+    external: true,
   },
   {
     label: 'Termos de Uso',
