@@ -1,3 +1,34 @@
+<script setup lang="ts">
+import FieldCheckbox from '~/components/FieldCheckbox.vue';
+
+const acceptTerms = ref<boolean>(false)
+
+function handleAccessSourceCode(ev: SubmitEvent) {
+  if (!ev.target || !acceptTerms.value) {
+    return
+  }
+
+  const formData = new FormData(ev.target)
+
+  const data = {
+    name: formData.get('name'),
+    email: formData.get('email'),
+    acceptTerms: acceptTerms.value,
+  };
+
+  window.open(
+    'https://github.com/fgv-projetos/smae', '_blank',
+  )
+
+  $fetch(
+    '/api/access-source-code', {
+      body: data,
+      method: 'POST',
+    },
+  )
+}
+</script>
+
 <template>
   <section class="start-to-use">
     <article class="article article--guideline">
@@ -55,14 +86,38 @@
         </p>
 
         <p>
-          O código fonte está disponível no link abaixo.
+          Para acessar o código fonte, preencha os dados abaixo.
         </p>
 
-        <p>
-          Bem-vindo ao SMAE!
-        </p>
+        <form
+          method="get"
+          class="start-to-use__form"
+          @submit.prevent="handleAccessSourceCode"
+        >
+          <FieldInput
+            name="name"
+            label="Nome"
+            placeholder="Nome"
+          />
 
-        <CtaButton label="Código Fonte" to="https://github.com/fgv-projetos/smae" />
+          <FieldInput
+            name="email"
+            label="Email"
+            placeholder="Email"
+          />
+
+          <FieldCheckbox
+            v-model="acceptTerms"
+            name="accept-terms"
+            label="Eu aceito que meu email seja usado para contato futuro"
+          />
+
+          <CtaButton
+            type="submit"
+            label="Acessar código fonte"
+            :disabled="!acceptTerms"
+          />
+        </form>
       </div>
     </article>
   </section>
@@ -209,6 +264,18 @@
     justify-content: space-around;
     background-color: $white;
     border-radius: 0 20px 20px 0;
+
+    img {
+      width: 58px;
+      height: 58px;
+    }
   }
+}
+
+.start-to-use__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 </style>

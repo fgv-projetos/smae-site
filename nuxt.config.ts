@@ -59,6 +59,11 @@ export default defineNuxtConfig({
     },
   },
   compatibilityDate: '2025-07-15',
+  // nitro: {
+  //   routeRules: {
+  //     '**': { cache: false }, // Disable caching for this route
+  //   },
+  // },
   vite: {
     css: {
       preprocessorOptions: {

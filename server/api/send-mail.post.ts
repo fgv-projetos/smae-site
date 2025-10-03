@@ -1,35 +1,6 @@
-import nodemailer, { type Transporter } from 'nodemailer'
+import nodemailer from 'nodemailer'
 import getEmailTemplateService from './_email-service/services/getEmailTemplateService'
-
-async function initEmailTransporter(): Promise<Transporter> {
-  const { email: emailEnvironment } = useRuntimeConfig()
-
-  if (emailEnvironment.driver !== 'fgv') {
-    const account = await nodemailer.createTestAccount()
-    const transporter = nodemailer.createTransport({
-      host: account.smtp.host,
-      port: account.smtp.port,
-      secure: account.smtp.secure,
-      auth: {
-        user: account.user,
-        pass: account.pass,
-      },
-    })
-
-    return transporter
-  }
-
-  const transporter = nodemailer.createTransport({
-    host: emailEnvironment.host,
-    port: emailEnvironment.port,
-    secure: true,
-    auth: {
-      user: emailEnvironment.user,
-    },
-  })
-
-  return transporter
-}
+import sendEmailService from './_email-service/services/sendEmailService'
 
 type DebugResponse = {
   debug: {
@@ -47,9 +18,8 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
   }
 
   const body: RequestBody = await readBody(event)
-  const client = await initEmailTransporter()
 
-  const organizationEmailPromise = client.sendMail({
+  const organizationEmailPromise = sendEmailService({
     from: {
       name: body.name,
       address: body.email,
@@ -83,7 +53,7 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
 
   const receivedEmailTemplate = await getEmailTemplateService('received-email.template.html')
 
-  const costumerEmailPromise = client.sendMail({
+  const costumerEmailPromise = sendEmailService({
     from: {
       name: 'Equipe SMAE Projetos',
       address: 'smae@fgv.com',
