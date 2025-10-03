@@ -4,7 +4,7 @@ import FieldCheckbox from '~/components/FieldCheckbox.vue';
 const acceptTerms = ref<boolean>(false)
 
 function handleAccessSourceCode(ev: SubmitEvent) {
-  if (!ev.target) {
+  if (!ev.target || !acceptTerms.value) {
     return
   }
 
