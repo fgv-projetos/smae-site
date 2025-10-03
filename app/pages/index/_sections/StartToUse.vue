@@ -82,7 +82,7 @@ function handleAccessSourceCode(ev: SubmitEvent) {
         </p>
 
         <p>
-          Consulte as Diretriz para uso ao lado.
+          Consulte as diretrizes para uso ao lado.
         </p>
 
         <p>
