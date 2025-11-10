@@ -20,7 +20,7 @@
           </p>
         </div>
 
-        <CtaButton label="Fale conosco" :to="{ name: 'fale-conosco' }" />
+        <CtaButton label="Fale conosco" :to="{ hash: '#formulario' }" />
       </aside>
     </article>
 
