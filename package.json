@@ -16,7 +16,6 @@
     "@nuxt/image": "^1.11.0",
     "@vueuse/nuxt": "^13.9.0",
     "axios": "^1.13.2",
-    "drupal-jsonapi-params": "^3.0.0",
     "eslint": "^9.35.0",
     "nodemailer": "^7.0.6",
     "nuxt": "^4.1.0",
