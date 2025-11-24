@@ -1,18 +1,16 @@
 <template>
   <div class="default-layout">
-    <!-- <SiteHeader /> -->
+    <SiteHeader />
 
     <main>
       <slot />
     </main>
 
-    <!-- <SiteFooter /> -->
+    <SiteFooter />
   </div>
 </template>
 
 <script lang="ts" setup>
-// import SiteFooter from '~/components/SiteFooter.vue';
-// import SiteHeader from '~/components/SiteHeader.vue';
 </script>
 
 <style lang="scss" scoped>
