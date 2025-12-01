@@ -1,0 +1,24 @@
+{
+  "received-email.template.html": [
+    {
+      "filename": "logo-transparente.jpg",
+      "path": "logo-transparente.jpg",
+      "cid": "logo-transparente"
+    },
+    {
+      "filename": "logo.png",
+      "path": "logo.png",
+      "cid": "logo"
+    },
+    {
+      "filename": "logo-fgv.png",
+      "path": "logo-fgv.png",
+      "cid": "logo-fgv"
+    },
+    {
+      "filename": "map.jpg",
+      "path": "map.jpg",
+      "cid": "map"
+    }
+  ]
+}

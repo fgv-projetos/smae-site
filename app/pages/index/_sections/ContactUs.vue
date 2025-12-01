@@ -1,0 +1,216 @@
+<template>
+  <section class="contact-us max-section">
+    <article class="contact-us__content">
+      <figure class="contact-us__logo">
+        <NuxtImg
+          src="logo-fgv.png"
+          alt="Logo FGV Projetos"
+          :size="150"
+        />
+      </figure>
+
+      <aside class="contact-us__description-wrapper">
+        <div class="contact-us__description">
+          <p>
+            A FGV Projetos, especializada em desenvolver soluções e produtos para o setor público, destaca-se por sua contribuição para modernizar estratégias governamentais e fomentar a inovação por meio da transformação digital. Com foco na experiência do usuário, a FGV Projetos contribui para a formação de um ecossistema de tecnologias governamentais.
+          </p>
+
+          <p>
+            A FGV Projetos oferece customização, desenvolvimento e treinamento para uma implantação de sucesso e máximo aproveitamento.
+          </p>
+        </div>
+
+        <CtaButton label="Fale conosco" :to="{ hash: '#formulario' }" />
+      </aside>
+    </article>
+
+    <figure class="contact-us__maps">
+      <NuxtImg
+        class="map-item map-item-main"
+        src="maps/map-main.png"
+        alt="Mapa São Paulo"
+      />
+
+      <NuxtImg
+        class="map-item"
+        src="maps/map-2.jpg"
+        alt="gráfico evolução"
+      />
+
+      <NuxtImg
+        class="map-item"
+        src="maps/map-3.png"
+        alt="Lista de tarefas"
+      />
+
+      <NuxtImg
+        class="map-item"
+        src="maps/map-4.png"
+        alt="Monitoramento Transferência"
+      />
+    </figure>
+  </section>
+</template>
+
+<script setup lang="ts">
+import CtaButton from '~/components/CtaButton.vue';
+</script>
+
+<style lang="scss" scoped>
+.contact-us {
+  padding-top: 1.75rem;
+  padding-bottom: 2rem;
+}
+
+.contact-us__logo {
+  width: 100%;
+  max-width: 7.25rem;
+}
+
+.contact-us__content {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+
+.contact-us__description {
+  color: $white;
+  font-weight: 400;
+  font-size: .75rem;
+  line-height: 1.1rem;
+
+  p {
+    margin-bottom: 1rem;
+  }
+}
+
+.contact-us__maps {
+  margin-top: 1.88rem;
+  margin-bottom: 20%;
+  position: relative;
+  width: 100%;
+  display: block
+}
+
+.map-item {
+  border-radius: 5px;
+}
+
+.map-item-main {
+  width: 80%;
+  height: 100%;
+}
+
+.map-item:nth-of-type(2) {
+  position: absolute;
+  top: -3%;
+  right: 0;
+
+  width: 35%;
+  height: 29%;
+}
+
+.map-item:nth-of-type(3) {
+  position: absolute;
+  top: 76%;
+  right: 0;
+
+  width: 47%;
+  height: 42%;
+}
+
+.map-item:nth-of-type(4) {
+  position: absolute;
+  top: 93%;
+  left: 0;
+
+  width: 45%;
+  height: 42%;
+}
+
+@container (width > 1000px) {
+  .contact-us {
+    padding-top: 5.81rem;
+    padding-bottom: 7.69rem;
+  }
+
+  .contact-us__logo {
+    width: 100%;
+    max-width: 27rem;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .contact-us__content {
+    display: flex;
+    flex-direction: row;
+    gap: .75rem;
+    justify-content: space-between;
+  }
+
+  .contact-us__description-wrapper {
+    flex-basis: 50%;
+  }
+
+  .contact-us__description {
+    color: $white;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.1rem;
+    flex-basis: 50%;
+
+    p {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .contact-us__maps {
+    margin-top: 5.94rem;
+    margin-bottom: initial;
+  }
+
+  .map-item {
+    border-radius: 20px;
+  }
+
+  .map-item-main {
+    width: 65%;
+    height: 100%;
+
+    margin-left: 5.38rem;
+  }
+
+  .map-item:nth-of-type(4) {
+    position: absolute;
+    left: initial;
+    top: -4%;
+    right: 0;
+
+    width: 36%;
+    height: 39%;
+  }
+
+  .map-item:nth-of-type(3) {
+    position: absolute;
+    top: initial;
+    right: 0;
+    bottom: -4%;
+
+    width: 46%;
+    height: 45%;
+  }
+
+  .map-item:nth-of-type(2) {
+    position: absolute;
+    top: initial;
+    bottom: -4%;
+    left: 0;
+
+    width: 44%;
+    height: 35%;
+  }
+}
+</style>

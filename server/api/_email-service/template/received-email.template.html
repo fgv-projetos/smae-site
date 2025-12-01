@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Recebido</title>
+  </head>
+
+  <body>
+    <header>
+      <img src="cid:logo-transparente" alt="logo smae" />
+    </header>
+
+    <main>
+      <h1>Olá, Recebemos seu email. Nossa equipe irá analisá-la e retornaremos o contato em breve.</h1>
+    </main>
+
+    <footer>
+      <div class="footer__grupo">
+        <img class="smae-logo" src="cid:logo" alt="logo smae grande" />
+
+        <div class="links">
+          <a class="links__item" href="sobre">Sobre</a>
+
+          <a class="links__item" href="contato">Contato</a>
+        </div>
+      </div>
+
+      <div class="footer__grupo">
+        <img class="fgv-logo" src="cid:logo-fgv" alt="logo smae grande" />
+      </div>
+    </footer>
+  </body>
+
+  <style>
+    html {
+      --gray-600: #3b5881;
+      --gray-800: #152741;
+      --white: #fff;
+    }
+
+    body {
+      margin: 0;
+      background-color: var(--gray-800);
+      color: var(--gray-800);
+    }
+
+    header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 204px;
+      background-image: url('cid:map');
+      background-position: center;
+    }
+
+    header img {
+      height: 50%;
+    }
+
+    main {
+      background-color: var(--white);
+      padding: 40px;
+      text-align: center;
+    }
+
+    main h1 {
+      font-size: 28px;
+      line-height: 42px;
+      max-width: 50%;
+      margin: auto;
+    }
+
+    footer {
+      padding: 20px;
+      color: var(--white);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    footer .footer__grupo {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      justify-content: flex-end;
+    }
+
+    footer .smae-logo,
+    footer .fgv-logo {
+      width: 200px;
+    }
+
+    footer .links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    footer .links__item {
+      text-decoration: underline;
+      color: var(--white);
+    }
+  </style>
+</html>
