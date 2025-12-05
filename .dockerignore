@@ -49,5 +49,8 @@ coverage
 
 # Misc
 README.md
-scripts
 netlify.toml
+
+# Scripts (exceto docker-entrypoint.sh necessário para o container)
+scripts/generate-certs.sh
+scripts/generate-letsencrypt.sh
