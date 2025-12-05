@@ -3,6 +3,14 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon'],
   ssr: true,
   devtools: { enabled: true },
+
+  // HTTPS configuration for development
+  devServer: {
+    https: {
+      key: './certs/localhost-key.pem',
+      cert: './certs/localhost.pem',
+    },
+  },
   app: {
     head: {
       title: 'SMAE - Sistema de Monitoramento e Acompanhamento Estratégico',
