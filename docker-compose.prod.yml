@@ -1,0 +1,38 @@
+services:
+  smae-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: smae-site:latest
+    container_name: smae-site-prod
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - ENVIRONMENT=production
+      # Timeout para aguardar certificados (0 = infinito)
+      - SSL_CERT_WAIT_TIMEOUT=0
+      # Para pular verificação de certificados (NÃO recomendado em produção)
+      # - SKIP_CERT_CHECK=false
+    volumes:
+      # Certificados SSL - serão lidos do diretório ./certs/
+      - ./certs:/etc/nginx/ssl:ro
+      # Logs do Nginx
+      - ./logs/nginx:/var/log/nginx
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "--no-check-certificate", "https://localhost/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s  # Tempo maior para aguardar certificados
+    networks:
+      - smae-network
+    labels:
+      - "com.smae.description=SMAE Site - Production"
+      - "com.smae.environment=production"
+
+networks:
+  smae-network:
+    driver: bridge
