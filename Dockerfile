@@ -45,6 +45,7 @@ ENV NUXT_EMAIL_HOST=smtpapp.fgv.br
 ENV NUXT_EMAIL_PORT=25
 ENV NUXT_EMAIL_USER=
 ENV NUXT_EMAIL_PASS=
+ENV NUXT_EMAIL_DESTINATION=smae@fgv.br
 
 # Setup runit service for Node.js (Nuxt server)
 RUN mkdir -p /etc/service/nuxt

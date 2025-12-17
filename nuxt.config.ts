@@ -61,7 +61,7 @@ export default defineNuxtConfig({
       port: 25, // Override with NUXT_EMAIL_PORT
       user: '', // Override with NUXT_EMAIL_USER
       pass: '', // Override with NUXT_EMAIL_PASS
-      destination: 'smae@fgv.br', // Override with NUXT_EMAIL_PASS
+      destination: 'smae@fgv.br', // Override with NUXT_EMAIL_DESTINATION
     },
   },
 
