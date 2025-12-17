@@ -39,8 +39,12 @@ COPY nginx.conf /etc/nginx/nginx.conf
 # Copy built Nuxt application
 COPY --from=builder /app/.output /app/.output
 
-# Copy .env for runtime
-COPY .env.fgv /app/.env
+# Default environment variables (override via docker-compose or docker run -e)
+ENV EMAIL_DRIVER=fgv
+ENV EMAIL_HOST=smtpapp.fgv.br
+ENV EMAIL_PORT=25
+ENV EMAIL_USER=
+ENV EMAIL_PASS=
 
 # Setup runit service for Node.js (Nuxt server)
 RUN mkdir -p /etc/service/nuxt

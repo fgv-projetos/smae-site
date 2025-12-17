@@ -11,11 +11,14 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
-      - ENVIRONMENT=production
-      # Timeout para aguardar certificados (0 = infinito)
-      - SSL_CERT_WAIT_TIMEOUT=0
-      # Para pular verificação de certificados (NÃO recomendado em produção)
-      # - SKIP_CERT_CHECK=false
+      - NITRO_PORT=3000
+      - NITRO_HOST=127.0.0.1
+      # Email configuration (override defaults from Dockerfile)
+      - EMAIL_DRIVER=fgv
+      - EMAIL_HOST=smtpapp.fgv.br
+      - EMAIL_PORT=25
+      - EMAIL_USER=
+      - EMAIL_PASS=
     volumes:
       # Certificados SSL - serão lidos do diretório ./certs/
       - ./certs:/etc/nginx/ssl:ro
@@ -25,17 +28,15 @@ services:
       test:
         [
           "CMD",
-          "wget",
-          "--quiet",
-          "--tries=1",
-          "--spider",
-          "--no-check-certificate",
+          "curl",
+          "-f",
+          "-k",
           "https://localhost/health",
         ]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 120s # Tempo maior para aguardar certificados
+      start_period: 10s
     networks:
       - smae-network
     labels:

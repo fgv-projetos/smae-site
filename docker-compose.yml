@@ -10,24 +10,38 @@ services:
       - "443:443"
     restart: unless-stopped
     environment:
-      - NODE_ENV=development
-      - ENVIRONMENT=development
-      # Aguarda 60 segundos por certificados em desenvolvimento
-      - SSL_CERT_WAIT_TIMEOUT=60
+      # teste como se fosse produção
+      - NODE_ENV=production
+      - NITRO_PORT=3000
+      - NITRO_HOST=127.0.0.1
+      # Email configuration (override defaults from Dockerfile)
+      - EMAIL_DRIVER=fgv
+      - EMAIL_HOST=smtpapp.fgv.br
+      - EMAIL_PORT=25
+      - EMAIL_USER=
+      - EMAIL_PASS=
     volumes:
+      # Certificados SSL - serão lidos do diretório ./certs/
       - ./certs:/etc/nginx/ssl:ro
     healthcheck:
       test:
         [
           "CMD",
-          "wget",
-          "--quiet",
-          "--tries=1",
-          "--spider",
-          "--no-check-certificate",
+          "curl",
+          "-f",
+          "-k",
           "https://localhost/health",
         ]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 90s
+      start_period: 10s
+    networks:
+      - smae-network
+    labels:
+      - "com.smae.description=SMAE Site - Development"
+      - "com.smae.environment=development"
+
+networks:
+  smae-network:
+    driver: bridge
