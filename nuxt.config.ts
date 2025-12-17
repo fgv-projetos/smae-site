@@ -56,11 +56,12 @@ export default defineNuxtConfig({
   // NUXT_EMAIL_DRIVER, NUXT_EMAIL_HOST, etc. will override these defaults
   runtimeConfig: {
     email: {
-      driver: 'ethereal',  // Override with NUXT_EMAIL_DRIVER
-      host: '',            // Override with NUXT_EMAIL_HOST
-      port: 25,            // Override with NUXT_EMAIL_PORT
-      user: '',            // Override with NUXT_EMAIL_USER
-      pass: '',            // Override with NUXT_EMAIL_PASS
+      driver: 'ethereal', // Override with NUXT_EMAIL_DRIVER
+      host: '', // Override with NUXT_EMAIL_HOST
+      port: 25, // Override with NUXT_EMAIL_PORT
+      user: '', // Override with NUXT_EMAIL_USER
+      pass: '', // Override with NUXT_EMAIL_PASS
+      destination: 'smae@fgv.br', // Override with NUXT_EMAIL_PASS
     },
   },
 
@@ -70,6 +71,7 @@ export default defineNuxtConfig({
       cert: './certs/localhost.pem',
     },
   },
+
   compatibilityDate: '2025-07-15',
 
   nitro: {
