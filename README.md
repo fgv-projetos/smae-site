@@ -190,10 +190,10 @@ Build the application for production:
 
 ```bash
 # Fill .env variables
-FGV_EMAIL_DRIVER='fgv'
-FGV_EMAIL_HOST=''
-FGV_EMAIL_PORT=''
-FGV_EMAIL_USER=''
+EMAIL_DRIVER=''
+EMAIL_HOST=''
+EMAIL_PORT=''
+EMAIL_USER=''
 ```
 
 ```bash

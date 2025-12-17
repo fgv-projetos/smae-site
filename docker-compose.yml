@@ -15,11 +15,11 @@ services:
       - NITRO_PORT=3000
       - NITRO_HOST=127.0.0.1
       # Email configuration (override defaults from Dockerfile)
-      - EMAIL_DRIVER=fgv
-      - EMAIL_HOST=smtpapp.fgv.br
-      - EMAIL_PORT=25
-      - EMAIL_USER=
-      - EMAIL_PASS=
+      - NUXT_EMAIL_DRIVER=fgv
+      - NUXT_EMAIL_HOST=smtpapp.fgv.br
+      - NUXT_EMAIL_PORT=25
+      - NUXT_EMAIL_USER=
+      - NUXT_EMAIL_PASS=
     volumes:
       # Certificados SSL - serão lidos do diretório ./certs/
       - ./certs:/etc/nginx/ssl:ro

@@ -24,6 +24,7 @@ interface EmailPayload {
 async function initEmailTransporter(): Promise<Transporter> {
   const { email: emailEnvironment } = useRuntimeConfig()
 
+  console.log(emailEnvironment);
   switch (emailEnvironment.driver) {
     case 'ethereal': {
       const account = await nodemailer.createTestAccount()
