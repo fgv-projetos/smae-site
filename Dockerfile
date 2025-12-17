@@ -62,3 +62,7 @@ RUN chmod +x /app/check-certs.sh
 
 # Expose ports
 EXPOSE 80 443
+
+# === Bamboo will inject SSL COPY commands before ENTRYPOINT ===
+# Use baseimage-docker's init system
+ENTRYPOINT ["/sbin/my_init"]
