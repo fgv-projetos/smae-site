@@ -96,32 +96,17 @@ async function handleSubmit(ev: SubmitEvent) {
   try {
     loading.value = true
 
-    // const response = await $fetch(
-    //   '/api/send-mail',
-    //   {
-    //     method: 'POST',
-    //     body: data,
-    //   },
-    // )
+    const response = await $fetch(
+      '/api/send-mail',
+      {
+        method: 'POST',
+        body: data,
+      },
+    )
 
-    // if (response?.debug) {
-    //   debug.value = response.debug
-    // }
-
-    const recipient = 'smae@fgv.com.br';
-    window.open(
-      `mailto:${recipient}?subject=${encodeURIComponent(data.subject)}&body=${encodeURIComponent(`
-        Solicitação de proposta - ${data.subject} \n
-        \n
-        Contato: \n
-        Nome: ${data.name}\n
-        Email: ${data.email} 
-        \n
-        \n
-        ${data.description}
-      `)}`,
-      '_blank',
-    );
+    if (response?.debug) {
+      debug.value = response.debug
+    }
 
     sent.value = {
       status: true,

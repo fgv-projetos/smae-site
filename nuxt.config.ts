@@ -3,14 +3,6 @@ export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon'],
   ssr: true,
   devtools: { enabled: true },
-
-  // HTTPS configuration for development
-  devServer: {
-    https: {
-      key: './certs/localhost-key.pem',
-      cert: './certs/localhost.pem',
-    },
-  },
   app: {
     head: {
       title: 'SMAE - Sistema de Monitoramento e Acompanhamento Estratégico',
@@ -61,10 +53,18 @@ export default defineNuxtConfig({
   css: ['~/assets/scss/main.scss'],
   runtimeConfig: {
     email: {
-      driver: import.meta.env.FGV_EMAIL_DRIVER !== '' ? import.meta.env.FGV_EMAIL_DRIVER : 'ethereal',
-      host: import.meta.env.FGV_EMAIL_HOST,
-      port: import.meta.env.FGV_EMAIL_POST,
-      user: import.meta.env.FGV_EMAIL_USER,
+      driver: import.meta.env.EMAIL_DRIVER !== '' ? import.meta.env.EMAIL_DRIVER : 'ethereal',
+      host: import.meta.env.EMAIL_HOST,
+      port: import.meta.env.EMAIL_PORT,
+      user: import.meta.env.EMAIL_USER,
+      pass: import.meta.env.EMAIL_PASS,
+    },
+  },
+
+  devServer: {
+    https: {
+      key: './certs/localhost-key.pem',
+      cert: './certs/localhost.pem',
     },
   },
   compatibilityDate: '2025-07-15',
