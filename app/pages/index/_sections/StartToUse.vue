@@ -3,7 +3,7 @@ import FieldCheckbox from '~/components/FieldCheckbox.vue';
 
 const acceptTerms = ref<boolean>(false)
 
-function handleAccessSourceCode(ev: SubmitEvent) {
+async function handleAccessSourceCode(ev: SubmitEvent) {
   if (!ev.target || !acceptTerms.value) {
     return
   }
@@ -13,10 +13,16 @@ function handleAccessSourceCode(ev: SubmitEvent) {
   const data = {
     name: formData.get('name'),
     email: formData.get('email'),
-    acceptTerms: acceptTerms.value,
+    acceptTerms: true,
   };
 
-  console.log(data);
+  await $fetch(
+    '/api/access-source-code',
+    {
+      method: 'POST',
+      body: data,
+    },
+  )
 
   window.open(
     'https://github.com/fgv-projetos/smae', '_blank',
