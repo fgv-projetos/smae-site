@@ -51,13 +51,16 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/scss/main.scss'],
+
+  // Runtime config - use NUXT_ prefix env vars at runtime
+  // NUXT_EMAIL_DRIVER, NUXT_EMAIL_HOST, etc. will override these defaults
   runtimeConfig: {
     email: {
-      driver: import.meta.env.EMAIL_DRIVER !== '' ? import.meta.env.EMAIL_DRIVER : 'ethereal',
-      host: import.meta.env.EMAIL_HOST,
-      port: import.meta.env.EMAIL_PORT,
-      user: import.meta.env.EMAIL_USER,
-      pass: import.meta.env.EMAIL_PASS,
+      driver: 'ethereal',  // Override with NUXT_EMAIL_DRIVER
+      host: '',            // Override with NUXT_EMAIL_HOST
+      port: 25,            // Override with NUXT_EMAIL_PORT
+      user: '',            // Override with NUXT_EMAIL_USER
+      pass: '',            // Override with NUXT_EMAIL_PASS
     },
   },
 
@@ -75,6 +78,17 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/'],
     },
+    // Include server assets (templates, images) in the build
+    serverAssets: [
+      {
+        baseName: 'email-templates',
+        dir: 'api/_email-service/template',
+      },
+      {
+        baseName: 'email-images',
+        dir: 'api/_email-service/images',
+      },
+    ],
   },
   // nitro: {
   //   routeRules: {

@@ -40,11 +40,11 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY --from=builder /app/.output /app/.output
 
 # Default environment variables (override via docker-compose or docker run -e)
-ENV EMAIL_DRIVER=fgv
-ENV EMAIL_HOST=smtpapp.fgv.br
-ENV EMAIL_PORT=25
-ENV EMAIL_USER=
-ENV EMAIL_PASS=
+ENV NUXT_EMAIL_DRIVER=fgv
+ENV NUXT_EMAIL_HOST=smtpapp.fgv.br
+ENV NUXT_EMAIL_PORT=25
+ENV NUXT_EMAIL_USER=
+ENV NUXT_EMAIL_PASS=
 
 # Setup runit service for Node.js (Nuxt server)
 RUN mkdir -p /etc/service/nuxt
