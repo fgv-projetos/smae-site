@@ -10,6 +10,8 @@ type DebugResponse = {
 }
 
 export default defineEventHandler(async (event): Promise<DebugResponse | undefined> => {
+  const { email: emailEnvironment } = useRuntimeConfig()
+
   type RequestBody = {
     name: string
     email: string
@@ -17,20 +19,21 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
     description: string
   }
 
-  const body: RequestBody = await readBody(event)
+  try {
+    const body: RequestBody = await readBody(event)
 
-  const organizationEmailPromise = sendEmailService({
-    from: {
-      name: body.name,
-      address: body.email,
-    },
-    to: {
-      name: 'Equipe SMAE Projetos',
-      address: 'smae@fgv.com',
-    },
-    subject: `Contato: Site SMAE - ${body.subject}`,
-    attachments: [],
-    html: `
+    const organizationEmailPromise = sendEmailService({
+      from: {
+        name: body.name,
+        address: body.email,
+      },
+      to: {
+        name: 'Equipe SMAE Projetos',
+        address: emailEnvironment.destination,
+      },
+      subject: `Contato: Site SMAE - ${body.subject}`,
+      attachments: [],
+      html: `
       <h1>Solicitação de proposta - ${body.subject}</h1>
       
       <h2>Contato:</h2>
@@ -49,41 +52,47 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
         }
       </style>
     `,
-  })
+    })
 
-  const receivedEmailTemplate = await getEmailTemplateService('received-email.template.html')
+    const receivedEmailTemplate = await getEmailTemplateService('received-email.template.html')
 
-  const costumerEmailPromise = sendEmailService({
-    from: {
-      name: 'Equipe SMAE Projetos',
-      address: 'smae@fgv.com',
-    },
-    to: {
-      name: body.name,
-      address: body.email,
-    },
-    subject: `SMAE - Contato recebido`,
-    attachments: receivedEmailTemplate.attachments,
-    html: receivedEmailTemplate.template,
-  })
-
-  const [organization, costumer] = await Promise.all([organizationEmailPromise, costumerEmailPromise])
-
-  const testUrl = nodemailer.getTestMessageUrl(organization)
-  if (!testUrl) {
-    return
-  }
-
-  return {
-    debug: [
-      {
-        id: organization.messageId as string,
-        url: nodemailer.getTestMessageUrl(organization) as string,
+    const costumerEmailPromise = sendEmailService({
+      from: {
+        name: 'Equipe SMAE Projetos',
+        address: emailEnvironment.destination,
       },
-      {
-        id: costumer.messageId as string,
-        url: nodemailer.getTestMessageUrl(costumer) as string,
+      to: {
+        name: body.name,
+        address: body.email,
       },
-    ],
+      subject: `SMAE - Contato recebido`,
+      attachments: receivedEmailTemplate.attachments,
+      html: receivedEmailTemplate.template,
+    })
+
+    const [organization, costumer] = await Promise.all([organizationEmailPromise, costumerEmailPromise])
+
+    const testUrl = nodemailer.getTestMessageUrl(organization)
+    if (!testUrl) {
+      return
+    }
+
+    return {
+      debug: [
+        {
+          id: organization.messageId as string,
+          url: nodemailer.getTestMessageUrl(organization) as string,
+        },
+        {
+          id: costumer.messageId as string,
+          url: nodemailer.getTestMessageUrl(costumer) as string,
+        },
+      ],
+    }
+  } catch (err) {
+    throw createError({
+      message: err.message,
+      statusCode: 500,
+    })
   }
 })
