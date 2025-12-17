@@ -78,6 +78,17 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/'],
     },
+    // Include server assets (templates, images) in the build
+    serverAssets: [
+      {
+        baseName: 'email-templates',
+        dir: 'api/_email-service/template',
+      },
+      {
+        baseName: 'email-images',
+        dir: 'api/_email-service/images',
+      },
+    ],
   },
   // nitro: {
   //   routeRules: {

@@ -1,9 +1,3 @@
-import type { ReadStream } from 'fs'
-import { createReadStream } from 'fs'
-import { readFile } from 'fs/promises'
-
-import { join } from 'path'
-
 import AttachmentsData from '../template/attachmentsData.json'
 
 type AttachmentsItem = {
@@ -14,7 +8,7 @@ type AttachmentsItem = {
 
 type ProcessedAttachmentsItem = {
   filename: string
-  content: ReadStream
+  content: Buffer
   cid: string
 }
 
@@ -24,32 +18,42 @@ type Response = {
 }
 
 async function getEmailTemplateService(fileName: string): Promise<Response> {
-  const filePath = join(process.cwd(), 'server', 'api', '_email-service', 'template', fileName)
-  const template = await readFile(filePath, 'utf-8')
+    const templateStorage = useStorage('assets:email-templates')
+    const keys = await templateStorage.getKeys()
+    // Use Nitro's useStorage instead of VueUse
+    console.log('Available templates:', keys)
+  const template = await templateStorage.getItem<string>(fileName)
+
+  if (!template) {
+    throw new Error(`Template not found: ${fileName}`)
+  }
 
   const attachmentsData = AttachmentsData as Record<string, AttachmentsItem[]>
   const attachmentsNeededList = attachmentsData[fileName]
+
   if (!attachmentsNeededList) {
-    return {
-      template,
-    }
+    return { template }
   }
 
-  const computedAttachmentsData = attachmentsNeededList.map((item) => {
-    const filename = join(process.cwd(), 'server', 'api', '_email-service', 'images', item.path)
-    const content = createReadStream(filename)
+  const imageStorage = useStorage('assets:email-images')
 
-    return {
-      cid: item.cid,
-      filename: item.filename,
-      content: content,
-    }
-  })
+  const computedAttachmentsData = await Promise.all(
+    attachmentsNeededList.map(async (item) => {
+      const content = await imageStorage.getItemRaw(item.path)
 
-  return {
-    template,
-    attachments: computedAttachmentsData,
-  }
+      if (!content) {
+        throw new Error(`Image not found: ${item.path}`)
+      }
+
+      return {
+        cid: item.cid,
+        filename: item.filename,
+        content: Buffer.from(content as ArrayBuffer),
+      }
+    })
+  )
+
+  return { template, attachments: computedAttachmentsData }
 }
 
 export default getEmailTemplateService
