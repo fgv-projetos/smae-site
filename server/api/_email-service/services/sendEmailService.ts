@@ -24,31 +24,61 @@ interface EmailPayload {
 async function initEmailTransporter(): Promise<Transporter> {
   const { email: emailEnvironment } = useRuntimeConfig()
 
-  if (emailEnvironment.driver !== 'fgv') {
-    const account = await nodemailer.createTestAccount()
-    const transporter = nodemailer.createTransport({
-      host: account.smtp.host,
-      port: account.smtp.port,
-      secure: account.smtp.secure,
-      auth: {
-        user: account.user,
-        pass: account.pass,
-      },
-    })
+  switch (emailEnvironment.driver) {
+    case 'ethereal': {
+      const account = await nodemailer.createTestAccount()
 
-    return transporter
+      console.log({
+        host: account.smtp.host,
+        port: account.smtp.port,
+        secure: account.smtp.secure,
+        auth: {
+          user: account.user,
+          pass: account.pass,
+        },
+      })
+
+      const transporter = nodemailer.createTransport({
+        host: account.smtp.host,
+        port: account.smtp.port,
+        secure: account.smtp.secure,
+        auth: {
+          user: account.user,
+          pass: account.pass,
+        },
+      })
+
+      return transporter
+    }
+
+    case 'fgv': {
+      const transporter = nodemailer.createTransport({
+        host: emailEnvironment.host,
+        port: emailEnvironment.port,
+        secure: false,
+      })
+
+      return transporter
+    }
+
+    case 'sendgrid': {
+      const transporter = nodemailer.createTransport({
+        host: emailEnvironment.host,
+        port: emailEnvironment.port,
+        secure: false,
+        auth: {
+          user: emailEnvironment.user,
+          pass: emailEnvironment.pass,
+        },
+      })
+
+      return transporter
+    }
+
+    default:
+      throw new Error('Driver not found')
+      break
   }
-
-  const transporter = nodemailer.createTransport({
-    host: emailEnvironment.host,
-    port: emailEnvironment.port,
-    secure: true,
-    auth: {
-      user: emailEnvironment.user,
-    },
-  })
-
-  return transporter
 }
 
 async function sendEmailService({ from, to, subject, attachments = [], html }: EmailPayload) {
