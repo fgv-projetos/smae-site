@@ -22,11 +22,20 @@ services:
       # Logs do Nginx
       - ./logs/nginx:/var/log/nginx
     healthcheck:
-      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "--no-check-certificate", "https://localhost/health"]
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "--no-check-certificate",
+          "https://localhost/health",
+        ]
       interval: 30s
       timeout: 10s
       retries: 3
-      start_period: 120s  # Tempo maior para aguardar certificados
+      start_period: 120s # Tempo maior para aguardar certificados
     networks:
       - smae-network
     labels:

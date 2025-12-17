@@ -21,6 +21,10 @@ FROM nginx:alpine
 # Install openssl for certificate validation
 RUN apk add --no-cache openssl
 
+# Copy .env.fgv and create .env
+COPY .env.fgv /app/.env.fgv
+RUN cp /app/.env.fgv /app/.env
+
 # Copy custom nginx config
 COPY nginx.conf /etc/nginx/nginx.conf
 
