@@ -3,43 +3,62 @@ FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Copy package files
 COPY package*.json ./
-
-# Install dependencies
 RUN npm ci
 
-# Copy source code
 COPY . .
 
-# Build the application
+# Use build (not generate) to include server-side API routes
 RUN npm run build
 
-# Production stage
-FROM nginx:alpine
+# Verify build output exists
+RUN ls -la .output/server/ && test -f .output/server/index.mjs
 
-# Install openssl for certificate validation
-RUN apk add --no-cache openssl
+# Production stage with phusion/baseimage
+FROM phusion/baseimage:noble-1.0.0
 
-# Copy .env.fgv and create .env
-COPY .env.fgv /app/.env.fgv
-RUN cp /app/.env.fgv /app/.env
+# Use baseimage-docker's init system
+CMD ["/sbin/my_init"]
 
-# Copy custom nginx config
-COPY nginx.conf /etc/nginx/nginx.conf
-
-# Copy built files from builder stage
-COPY --from=builder /app/.output/public /usr/share/nginx/html
-
-# Copy entrypoint script
-COPY scripts/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
-RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+# Install Node.js 22 from NodeSource
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends ca-certificates curl gnupg && \
+    mkdir -p /etc/apt/keyrings && \
+    curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
+    echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" > /etc/apt/sources.list.d/nodesource.list && \
+    apt-get update && \
+    apt-get install -y --no-install-recommends nginx nodejs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Create directory for SSL certificates
 RUN mkdir -p /etc/nginx/ssl
 
-# Expose ports 80 and 443
-EXPOSE 80 443
+# Copy nginx config
+COPY nginx.conf /etc/nginx/nginx.conf
 
-# Use custom entrypoint
-ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+# Copy built Nuxt application
+COPY --from=builder /app/.output /app/.output
+
+# Default environment variables (override via docker-compose or docker run -e)
+ENV EMAIL_DRIVER=fgv
+ENV EMAIL_HOST=smtpapp.fgv.br
+ENV EMAIL_PORT=25
+ENV EMAIL_USER=
+ENV EMAIL_PASS=
+
+# Setup runit service for Node.js (Nuxt server)
+RUN mkdir -p /etc/service/nuxt
+COPY scripts/run-nuxt.sh /etc/service/nuxt/run
+RUN chmod +x /etc/service/nuxt/run
+
+# Enable nginx runit service
+RUN mkdir -p /etc/service/nginx
+COPY scripts/run-nginx.sh /etc/service/nginx/run
+RUN chmod +x /etc/service/nginx/run
+
+# Copy diagnostic script (run manually: docker exec <container> /app/check-certs.sh)
+COPY scripts/check-certs.sh /app/check-certs.sh
+RUN chmod +x /app/check-certs.sh
+
+# Expose ports
+EXPOSE 80 443

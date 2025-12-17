@@ -70,7 +70,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
 
   nitro: {
-    preset: 'static',
+    preset: 'node-server',
     prerender: {
       crawlLinks: true,
       routes: ['/'],
