@@ -56,6 +56,8 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
 
     const receivedEmailTemplate = await getEmailTemplateService('received-email.template.html')
 
+    const origin = getRequestURL(event).origin
+
     const costumerEmailPromise = sendEmailService({
       from: {
         name: 'Equipe SMAE Projetos',
@@ -67,7 +69,7 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
       },
       subject: `SMAE - Contato recebido`,
       attachments: receivedEmailTemplate.attachments,
-      html: receivedEmailTemplate.template,
+      html: receivedEmailTemplate.template.replace('{{origin}}', origin),
     })
 
     const [organization, costumer] = await Promise.all([organizationEmailPromise, costumerEmailPromise])
