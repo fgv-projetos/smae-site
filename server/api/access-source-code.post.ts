@@ -15,6 +15,8 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
     acceptTerms: boolean
   }
 
+  const { email: emailEnvironment } = useRuntimeConfig()
+
   const body: RequestBody = await readBody(event)
 
   const email = await sendEmailService({
@@ -24,7 +26,7 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
     },
     to: {
       name: 'Equipe SMAE Projetos',
-      address: 'smae@fgv.com',
+      address: emailEnvironment.destination,
     },
     subject: `Acesso código fonte - ${body.email}`,
     attachments: [],
@@ -32,20 +34,10 @@ export default defineEventHandler(async (event): Promise<DebugResponse | undefin
       <h1>Acesso ao código fonte</h1>
       
       <h2>Contato:</h2>
-      <h4>${body.name}</h4>
-      <h4>${body.email}</h4>
+      <h4 style="margin-bottom: 0">${body.name}</h4>
+      <h4 style="margin: 0">${body.email}</h4>
 
       <p>Aceitou termos ${body.acceptTerms ? 'Sim' : 'Não'}</p>
-
-      <style>
-        h2 {
-          margin-bottom: 0;
-        }
-
-        h4 {
-          margin: 0;
-        }
-      </style>
     `,
   })
 

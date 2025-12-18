@@ -18,10 +18,10 @@ type Response = {
 }
 
 async function getEmailTemplateService(fileName: string): Promise<Response> {
-    const templateStorage = useStorage('assets:email-templates')
-    const keys = await templateStorage.getKeys()
-    // Use Nitro's useStorage instead of VueUse
-    console.log('Available templates:', keys)
+  const templateStorage = useStorage('assets:email-templates')
+  const keys = await templateStorage.getKeys()
+  // Use Nitro's useStorage instead of VueUse
+  console.log('Available templates:', keys)
   const template = await templateStorage.getItem<string>(fileName)
 
   if (!template) {
@@ -50,10 +50,13 @@ async function getEmailTemplateService(fileName: string): Promise<Response> {
         filename: item.filename,
         content: Buffer.from(content as ArrayBuffer),
       }
-    })
+    }),
   )
 
-  return { template, attachments: computedAttachmentsData }
+  return {
+    template,
+    attachments: computedAttachmentsData,
+  }
 }
 
 export default getEmailTemplateService

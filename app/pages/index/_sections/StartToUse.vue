@@ -2,6 +2,7 @@
 import FieldCheckbox from '~/components/FieldCheckbox.vue';
 
 const acceptTerms = ref<boolean>(false)
+const formSubmitted = ref<boolean>(false)
 
 async function handleAccessSourceCode(ev: SubmitEvent) {
   if (!ev.target || !acceptTerms.value) {
@@ -23,6 +24,8 @@ async function handleAccessSourceCode(ev: SubmitEvent) {
       body: data,
     },
   )
+
+  formSubmitted.value = true
 
   window.open(
     'https://github.com/fgv-projetos/smae', '_blank',
@@ -86,11 +89,12 @@ async function handleAccessSourceCode(ev: SubmitEvent) {
           Consulte a diretriz de uso.
         </p>
 
-        <p>
+        <p v-if="!formSubmitted">
           Para acessar o código fonte, preencha os dados abaixo.
         </p>
 
         <form
+          v-if="!formSubmitted"
           method="get"
           class="start-to-use__form"
           @submit.prevent="handleAccessSourceCode"
@@ -119,6 +123,16 @@ async function handleAccessSourceCode(ev: SubmitEvent) {
             :disabled="!acceptTerms"
           />
         </form>
+
+        <div
+          v-if="formSubmitted"
+          class="success-message"
+        >
+          <h3>Solicitação enviada com sucesso!</h3>
+          <p>
+            Obrigado pelo seu interesse. O código fonte está sendo aberto em uma nova aba.
+          </p>
+        </div>
       </div>
     </article>
   </section>
@@ -278,5 +292,27 @@ async function handleAccessSourceCode(ev: SubmitEvent) {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.success-message {
+  width: 100%;
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  h3 {
+    color: $white;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: $white;
+    font-size: 0.87rem;
+    line-height: 1.3rem;
+    margin-bottom: 0;
+  }
 }
 </style>
