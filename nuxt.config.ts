@@ -1,6 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   modules: ['@nuxt/eslint', '@nuxt/fonts', '@nuxt/eslint', '@vueuse/nuxt', '@nuxt/image', '@nuxt/icon'],
+  plugins: [
+    '~/plugins/gtm.client.ts',
+  ],
   ssr: true,
   devtools: { enabled: true },
   app: {
