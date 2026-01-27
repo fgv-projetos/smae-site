@@ -5,9 +5,10 @@
         <NuxtLink to="/">
           <NuxtImg
             class="site-header__logo"
-            src="logo.png"
+            src="smae-logo-blue.svg"
             alt="Logo SMAE"
-          /></NuxtLink>
+          />
+        </NuxtLink>
       </figure>
 
       <button

@@ -10,7 +10,7 @@
 
         <NuxtImg
           class="hero__logo"
-          src="logo-large.png"
+          src="smae-logo-white-simplificado.svg"
           alt="Smae Logo - Grande"
           width="280"
           height="110"
@@ -105,8 +105,8 @@
   }
 
   .hero__logo {
-    width: 16.88rem;
-    height: 6.88rem;
+    width: 17.88rem;
+    height: 8rem;
   }
 
   .hero__fgv-logo {

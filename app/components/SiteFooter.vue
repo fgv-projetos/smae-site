@@ -3,7 +3,7 @@
     <div class="footer__content">
       <NuxtImg
         class="footer__logo-smae"
-        src="smae-logo.png"
+        src="smae-logo-white.svg"
         alt="Logo Smae"
       />
 
